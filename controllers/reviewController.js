@@ -9,7 +9,7 @@ const createReview = async function (req, res, next) {
 
 const getReview = async function (req, res, next) {
     review = new Review();
-    const codeClass = req.query.courseID;
+    const codeClass = req.query.courseID.toUpperCase();
     ans = await review.getAverages(codeClass);
     res.json(ans);
 };
