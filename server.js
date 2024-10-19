@@ -11,8 +11,6 @@ const baseController = require("./controllers/baseController")
 const reviewController = require("./controllers/reviewController")
 const bodyParser = require("body-parser");
 
-<<<<<<< HEAD
-=======
 // const {Pool} = require('pg');
 // const inventoryRoute = require('./routes/inventoryRoute')
 // const utilities = require('./utilities');
@@ -22,7 +20,6 @@ const bodyParser = require("body-parser");
  * Routes
  *************************/
 app.use(cors());
->>>>>>> b62a62b7a15ebb91e67f5e50c18729e7e722749f
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', '../layouts/layout');
