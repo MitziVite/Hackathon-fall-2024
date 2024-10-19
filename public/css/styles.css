@@ -338,6 +338,30 @@ form {
   border-color: #4caf50;
 }
 
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50; /* Cambia este color según tus preferencias */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px; /* Espacio extra arriba del botón */
+}
+
+.submit-button:hover {
+    background-color: #45a049; /* Color para el efecto hover */
+    transform: translateY(-2px);
+}
+
+.submit-button:active {
+    background-color: #3e8e41; /* Color cuando el botón es presionado */
+    transform: translateY(0);
+}
+
+
 
 @media (max-width: 768px) {
   .navbar {
@@ -426,4 +450,107 @@ body {
 
 .footer-links a:hover {
   text-decoration: underline;
+}
+.styled-select {
+    width: 100%;
+    padding: 10px; /* Espacio interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 2px solid #2B4D6A; /* Borde de color */
+    background-color: #f1f1f1; /* Fondo blanco */
+    color: #2B4D6A; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    appearance: none; /* Quitar el estilo nativo */
+    appearance: none; /* Elimina el estilo por defecto del navegador */
+    -webkit-appearance: none; /* Para navegadores webkit (Safari, Chrome) */
+    -moz-appearance: none;
+    transition: border 0.3s ease; /* Transición suave para el borde */
+    padding-right: 30px; /* Espacio para el icono */
+    position: relative; /* Necesario para posicionar el icono */
+  }
+  
+  /* Agregar un efecto de enfoque */
+  .styled-select:focus {
+    border-color: #4CAF50; /* Cambiar el color del borde al enfocarse */
+    outline: none; /* Quitar el contorno predeterminado */
+  }
+  
+  /* Estilo para el contenedor del select */
+  .container-form {
+    margin-bottom: 20px; /* Espacio debajo de cada dropdown */
+  }
+  
+  /* Estilo del icono de dropdown */
+  .dropdown-icon {
+    position: absolute; /* Posicionamiento absoluto */
+    right: 10px; /* Alinear a la derecha */
+    top: 50%; /* Centrar verticalmente */
+    transform: translateY(-50%); /* Ajustar la posición vertical */
+    pointer-events: none; /* Deshabilitar eventos en el icono */
+  }
+  
+  /* Estilo del icono SVG */
+  .dropdown-icon svg {
+    width: 12px; /* Ajusta el ancho según sea necesario */
+    height: 12px; /* Ajusta la altura según sea necesario */
+    fill: #2B4D6A; /* Asegúrate de que el color sea visible */
+}
+/* Estilos para el contenedor del formulario */
+.container-form {
+    margin: 20px; /* Espaciado alrededor del contenedor */
+}
+
+/* Estilo para etiquetas */
+label {
+    font-size: 18px; /* Tamaño de fuente más grande */
+    font-family: 'Arial', sans-serif; /* Cambia la fuente aquí si lo deseas */
+    margin-top: 15px; /* Espaciado superior */
+    display: block; /* Para que ocupen todo el ancho disponible */
+}
+
+/* Espaciado entre elementos */
+.select-wrapper,
+.slider-container,
+.checkbox-group,
+.radio-group {
+    margin-bottom: 20px; /* Espaciado inferior entre grupos de elementos */
+}
+
+/* Estilo para los select */
+.styled-select {
+    font-size: 16px; /* Tamaño de fuente para el select */
+}
+
+/* Estilo para botones */
+.submit-button {
+    font-size: 16px; /* Tamaño de fuente para el botón */
+    padding: 10px 20px; /* Espaciado interno */
+}
+
+/* Opcional: Espaciado en los checkboxes */
+.container-checkbox {
+    display: block; /* Cada checkbox en su propia línea */
+    margin-bottom: 10px; /* Espaciado entre checkboxes */
+}
+
+/* Opcional: Estilo para los radios */
+.radio-label {
+    margin-right: 15px; /* Espacio entre opciones de radio */
+}
+
+/* Estilo para el textarea */
+.styled-textarea {
+    width: 100%; /* Ocupa el ancho completo del formulario */
+    font-size: 16px; /* Tamaño de la fuente */
+    padding: 10px; /* Espaciado interno */
+    border: 2px solid #ccc; /* Color y grosor del borde */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #f0f0f0; /* Color de fondo */
+    color: #333; /* Color del texto */
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+/* Estilo del borde del textarea cuando está enfocado */
+.styled-textarea:focus {
+    border-color: #007bff; /* Cambia el color del borde al enfocar */
+    outline: none; /* Elimina el contorno por defecto */
 }
