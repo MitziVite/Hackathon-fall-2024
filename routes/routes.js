@@ -1,8 +1,9 @@
 const express = require('express');
 const baseController = require('../controllers/baseController');
+const reviewController = require('../controllers/reviewController');
 const router = express.Router();
 
-
+const jsonMiddleware = express.json();
 
 // Static Routes
 // Set up "public" folder / subfolders for static files
@@ -12,6 +13,7 @@ router.use("/js", express.static(__dirname + "public/js"));
 router.use("/images", express.static(__dirname + "public/images"));
 
 router.get("/", baseController.buildHome);
+router.post("/createReview", jsonMiddleware, reviewController.createReview);
 
 module.exports = router;
 
