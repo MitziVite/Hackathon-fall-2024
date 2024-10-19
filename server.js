@@ -5,9 +5,11 @@ const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/routes")
 const baseController = require("./controllers/baseController")
+
 // const {Pool} = require('pg');
 // const inventoryRoute = require('./routes/inventoryRoute')
 // const utilities = require('./utilities');
+
 
 /* ***********************
  * Routes
@@ -20,9 +22,15 @@ app.use(static)
 // Inventory routes
 // app.use("/inv", inventoryRoute)
 
+<<<<<<< HEAD
 //  route
 app.get("/", function(req, res){
   res.render("index", {title: "Home"})
+=======
+// Index route
+app.get("/", function (req, res) {
+  res.render("index", { title: "Home" })
+>>>>>>> 8f0e50099a7ecb691a50a6a4ef3c6913c61a7c68
 })
 
 // Index route
