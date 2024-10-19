@@ -1,6 +1,8 @@
 
 const expressLayouts = require('express-ejs-layouts');
 const express = require("express")
+const cors = require("cors");
+
 const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/routes")
@@ -9,6 +11,18 @@ const baseController = require("./controllers/baseController")
 const reviewController = require("./controllers/reviewController")
 const bodyParser = require("body-parser");
 
+<<<<<<< HEAD
+=======
+// const {Pool} = require('pg');
+// const inventoryRoute = require('./routes/inventoryRoute')
+// const utilities = require('./utilities');
+
+
+/* ***********************
+ * Routes
+ *************************/
+app.use(cors());
+>>>>>>> b62a62b7a15ebb91e67f5e50c18729e7e722749f
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', '../layouts/layout');
@@ -18,8 +32,8 @@ app.use(static)
 // app.use("/inv", inventoryRoute)
 
 //  route
-app.get("/", function(req, res){
-  res.render("index", {title: "Home"})
+app.get("/", function (req, res) {
+  res.render("index", { title: "Home" })
 })
 app.use(bodyParser.urlencoded({ extended: true }));
 // Index route
