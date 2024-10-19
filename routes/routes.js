@@ -15,6 +15,7 @@ router.use("/images", express.static(__dirname + "public/images"));
 router.get("/", baseController.buildHome);
 router.post("/createReview", jsonMiddleware, reviewController.createReview);
 router.get("/getCourseReview", jsonMiddleware, reviewController.getReview);
+router.get("/getCourseDetails", jsonMiddleware, reviewController.getCourseDetails);
 
 
 module.exports = router;
