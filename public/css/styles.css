@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Chivo:ital,wght@0,100..900;1,100..900&display=swap');
 *,
 *:before,
 *:after {
@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: Lora, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Chivo' ;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -15,6 +15,11 @@ body {
   flex-direction: column;
   background-color: #f0f4f8;
   /* Color de fondo suave */
+}
+
+h1{
+    font-family: 'Alfa  Slab One';
+    font-size: 45px;
 }
 
 main {
@@ -501,10 +506,12 @@ body {
 
 /* Estilo para etiquetas */
 label {
-    font-size: 18px; /* Tamaño de fuente más grande */
+    font-size: 20px;
+    /* font-weight: bold; */
     font-family: 'Arial', sans-serif; /* Cambia la fuente aquí si lo deseas */
     margin-top: 15px; /* Espaciado superior */
     display: block; /* Para que ocupen todo el ancho disponible */
+    padding: 3px;;
 }
 
 /* Espaciado entre elementos */
