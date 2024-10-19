@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
-/******* Change Box Model ***************/
+
 *,
 *:before,
 *:after {
@@ -13,6 +13,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #f0f4f8; /* Color de fondo suave */
 }
 
 main {
@@ -20,10 +21,9 @@ main {
 }
 
 /* N      A      V      B      A      R */
-
 #top-header {
   display: flex;
-  justify-content: space-between; /* Distribuir espacio entre el siteName y el navbar */
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   background-color: #2B4D6A;
@@ -41,7 +41,7 @@ main {
 
 /* Estilo de Navbar y Botones */
 .navbar {
-  list-style-type: none; 
+  list-style-type: none;
   display: flex;
   align-items: center;
   padding: 0;
@@ -77,104 +77,290 @@ main {
   background-color: #575757;
 }
 
-
 /* F      O      R      M */
-
 .container-form {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    height: 50vh;
-  }
-
-  form {
-    width: 100%;
-    max-width: 500px;       
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-.dropdown{
-    min-width: 15em;
-    position: relative;
-    margin: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  padding: 20px; /* Espaciado alrededor del formulario */
 }
 
-.dropdown *{
-    box-sizing: border-box;
+form {
+  width: 100%;
+  max-width: 600px; /* Ampliar ancho máximo */
+  padding: 30px; /* Mayor padding para un mejor espacio interno */
+  background-color: #ffffff; /* Fondo blanco para el formulario */
+  border-radius: 10px; /* Borde más redondeado */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
 }
+
+/* Dropdown */
+.dropdown {
+  min-width: 15em;
+  position: relative;
+  margin: 2em 0; /* Separación vertical entre dropdowns */
+}
+
+.dropdown * {
+  box-sizing: border-box;
+}
+
 .select {
-    background: #2a2f3b;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 2px #2a2f3b solid;
-    cursor: pointer;
-    transition: background 0.3s;
-    padding: 10px;
-    margin-bottom: 0;
+  background: #2a2f3b;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px #2a2f3b solid;
+  cursor: pointer;
+  transition: background 0.3s;
+  padding: 10px;
 }
 
-.select-clicked{
-    border: 2px #26489a solid;
-    box-shadow: 0 0 0.8em #26489a;
+.select-clicked {
+  border: 2px #26489a solid;
+  box-shadow: 0 0 0.8em #26489a;
 }
 
-.select:hover{
-    background: #323741;
+.select:hover {
+  background: #323741;
 }
 
-.caret{
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid #fff;
-    transition: 0.3s;
+.caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #fff;
+  transition: 0.3s;
 }
 
 .caret-rotate {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
-.menu{
-    list-style: none;
-    padding: 0;
-    background: #323741;
-    border: 1px #363a43 solid;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-    border-radius: 0.5em;
-    color: #9fa5b5;
-    position: absolute;
-    /* top: 3em; */
-    left: 50%;
-    width: 100%;
-    transform: translateX(-50%);
-    opacity: 0;
-    display: none;
-    transition: 0.2s;
-    z-index: 1;
+.menu {
+  list-style: none;
+  padding: 0;
+  background: #323741;
+  border: 1px #363a43 solid;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  color: #9fa5b5;
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+  z-index: 1;
+  margin-top: 0;
 }
 
-.menu li{
-    padding: 0.7em 0.5em;
-    /* margin: 0.3em 0; */
-    border-radius: 0.5em;
-    cursor: pointer;
+.menu li {
+  padding: 0.7em 0.5em;
+  border-radius: 0.5em;
+  cursor: pointer;
 }
 
-.menu li:hover{
-    background: #2a2d35;
+.menu li:hover {
+  background: #2a2d35;
 }
 
-.active{
-    background: #23242a;
+.active {
+  background: #23242a;
 }
 
-.menu-open{
-    display: block;
-    opacity: 1;
+.menu-open {
+  display: block;
+  opacity: 1;
+}
+
+/* Slider */
+.box-minmax {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.box-minmax span {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.range-slider {
+  position: relative;
+  width: 100%;
+}
+
+.rs-range {
+  width: 100%;
+  -webkit-appearance: none;
+  background: transparent;
+  margin-top: 30px;
+}
+
+.rs-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  background: #d1d1d1;
+  border-radius: 5px;
+}
+
+.rs-range::-webkit-slider-thumb {
+  height: 22px;
+  width: 22px;
+  background: #4CAF50;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -9px;
+  transition: background 0.3s ease;
+}
+
+.rs-range::-webkit-slider-thumb:hover {
+  background: #45a049;
+}
+
+.rs-label {
+  position: absolute;
+  transform-origin: center center;
+  display: block;
+  width: 60px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  font-size: 16px;
+  transition: left 0.1s;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+/* Checkbox */
+.checkbox-group {
+  margin: 15px 0;
+}
+
+.container-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 10px 0;
+  position: relative;
+  padding-left: 25px;
+  font-size: 16px;
+}
+
+.container-checkbox input {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.container-checkbox input:checked ~ .checkmark {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Estilos de Radio */
+.radio-group {
+  display: flex;
+  margin: 15px 0;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 15px;
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.radio-group input {
+  display: none;
+}
+
+.radio-group input:checked + .radio-label {
+  background-color: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
+
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        gap: 20px; /* Espaciado entre elementos */
+        background-color: #2B4D6A; /* Color de fondo del navbar */
+        position: absolute; /* Permite que el navbar se superponga */
+        top: 60px; /* Ajusta según la altura del encabezado */
+        right: 0; /* Alinea el navbar a la derecha */
+        width: 100%; /* Ancho completo */
+        display: none; /* Ocultar por defecto */
+        transition: display 0.3s ease; /* Animación suave para mostrar/ocultar */
+    }
+
+    .navbar.active {
+        display: flex; /* Muestra el navbar al activarlo */
+    }
+
+    /* Estilos del botón de menú */
+    .menu-toggle {
+        display: block; /* Muestra el botón de menú */
+        background-color: #2B4D6A; /* Color de fondo */
+        color: #FFD700; /* Color del texto */
+        border: none; /* Sin borde */
+        padding: 10px 15px; /* Espaciado */
+        cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    }
+}
+
+/* Estilos para el botón de menú */
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none; /* Oculta el botón en pantallas grandes */
+    }
 }
