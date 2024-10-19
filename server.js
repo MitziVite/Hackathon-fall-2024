@@ -24,18 +24,17 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', '../layouts/layout');
 app.use(static)
-
-// Inventory routes
-// app.use("/inv", inventoryRoute)
-
-//  route
-app.get("/", function (req, res) {
-  res.render("index", { title: "Home" })
-})
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome));
-// utilities.handleErrors(baseController.buildHome)
+
+// View Routes 
+app.get("/about", utilities.handleErrors(baseController.buildDetails));
+
+// View Routes 
+app.get("/review", utilities.handleErrors(baseController.submitReview));
 
 
 // app.get('/create-review', (req, res) => {
