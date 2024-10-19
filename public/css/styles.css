@@ -6,8 +6,7 @@
   box-sizing: border-box;
 }
 
-
-body{
+body {
   font-family: Lora, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -20,81 +19,80 @@ main {
   flex: 1;
 }
 
+/* N      A      V      B      A      R */
+
 #top-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Distribuir espacio entre el siteName y el navbar */
   align-items: center;
-  padding: 10px 20px;
-  background-color: #890620;
-  /* border-bottom: 1px solid #ddd; */
+  padding: 0 20px;
+  background-color: #2B4D6A;
 }
 
 .siteName a {
   text-decoration: none;
-  font-size: 35px;
-  color: #fff;
+  font-size: 18px;
+  color: #FFD700;
 }
 
-.siteName a:hover{
+.siteName a:hover {
   text-decoration: none;
 }
 
-/* #tools a {
-  font-size: 16px;
-  color: #fff;
-  text-decoration: none;
-}
-
-#tools a:hover {
-  text-decoration: none;
-} */
-
-
-nav {
-  width: 100%;
-  /* background-color: #333; */
-  padding: 10px 0;
-}
-
+/* Estilo de Navbar y Botones */
 .navbar {
   list-style-type: none; 
-  margin: 0;
-  padding: 0;
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto; 
+  padding: 0;
+  margin-left: auto;
+  gap: 60px;
 }
 
-
 .navbar li {
-  margin: 0 10px;
+  margin: 10px 30px;
 }
 
 .navbar a {
   color: white;
   text-decoration: none;
-  padding: 10px 20px;
   display: block;
   font-size: 18px;
-  transition: background-color 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .navbar a:hover {
   background-color: #575757;
-  border-radius: 5px;
+  transform: translateY(-2px);
 }
 
 .navbar a.active {
   background-color: #000000;
-  padding: 10px 40px;
 }
-
 
 .navbar a.active:hover {
   background-color: #575757;
-  border-radius: 5px;
-  padding: 10px 40px;
 }
 
+
+/* F      O      R      M */
+
+.container-form {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 50vh;
+  }
+
+  form {
+    width: 100%;
+    max-width: 500px;       
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
