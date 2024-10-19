@@ -72,6 +72,30 @@ class Review {
         };
         var result = await this.db.collection('reviews').insertOne(obj);
     }
+    
+    async getClassesWithReviews(codeClass) {
+        try {
+            const collection = db.collection('classes'); // The Classes collection
+            const results = await collection.aggregate([
+                {
+                    $lookup: {
+                        from: 'reviews',           // The collection to join
+                        localField: '__catalogCourseId',        // The field from the Classes collection
+                        foreignField: 'codeClass', // The field from the Reviews collection
+                        as: 'reviews'             // The name of the new array field for the reviews
+                    }
+                },
+                {$match:{
+                    __catalogCourseId: { $in: [codeClass] } // Filter for specific classes
+                }}
+            ]).toArray();
+    
+            return results; // Return the array of classes with their reviews
+        } catch (error) {
+            console.error('Error retrieving classes with reviews:', error);
+            return null; // Handle the error as needed
+        }
+    }
 
 }
 
