@@ -1,16 +1,17 @@
-const { connectDB } = require('../database');
+const Review = require('../models/reviewModel.js');
 
 const createReview = async function (req, res, next) {
-    const db = await connectDB();
-    console.log(req.body);
-    const result = await db.collection('reviews').insertOne(req.body);
+    review = new Review(req.body);
+    review.createReview();
     res.status(200).json();
     return ''; // Return the created review
 };
 
-const getAllReviews = async function (req, res, next) {
-    const db = await connectDB();
-    return await db.collection('reviews').find().toArray();
+const getReview = async function (req, res, next) {
+    review = new Review();
+    const codeClass = req.query.courseID;
+    ans = await review.getAverages(codeClass);
+    res.json(ans);
 };
 
-module.exports = { createReview, getAllReviews };
+module.exports = { createReview, getReview };

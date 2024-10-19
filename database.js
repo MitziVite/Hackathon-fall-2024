@@ -7,11 +7,13 @@ const connectDB = async () => {
     try {
         await client.connect();
         console.log('MongoDB connected successfully');
-        return client.db(); // Return the database object
+        return await client.db(); // Return the database object
     } catch (error) {
         console.error('MongoDB connection error:', error);
         process.exit(1); // Exit the process with failure
     }
 };
+
+//client2 = connectDB();
 
 module.exports = { connectDB };
