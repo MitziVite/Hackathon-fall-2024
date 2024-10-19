@@ -664,3 +664,39 @@ label {
     background-color: rgba(0, 0, 0, 0.5); /* Color negro con 50% de transparencia */
     pointer-events: none; /* Para que el div no interfiera con el contenido */
 }
+
+
+
+.review-container {
+    background-color: #f9f9f9; /* Fondo del contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+    max-width: 600px; /* Ancho máximo del contenedor */
+    margin: 20px auto; /* Centrado horizontal y margen superior */
+    padding: 20px; /* Espaciado interno */
+    flex-grow: 1; /* Permite que el contenedor crezca para ocupar espacio */
+}
+
+.label {
+    display: block; /* Hace que las etiquetas ocupen todo el ancho */
+    margin-top: 10px; /* Espacio entre las etiquetas y los campos */
+}
+
+.input-text,
+.input-number,
+.input-textarea {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    margin-top: 5px; /* Espacio entre el campo y la etiqueta */
+    border: 1px solid #ccc; /* Borde del campo */
+    border-radius: 4px; /* Bordes redondeados de los campos */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+.input-checkbox {
+    margin-top: 10px; /* Espacio adicional para el checkbox */
+}
+
+.input-textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}

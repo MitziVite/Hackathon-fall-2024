@@ -20,5 +20,15 @@ baseController.buildDetails = async function(req, res, next) {
 
 }
 
+baseController.buildForm = async function(req, res, next) {
+    try{
+      res.render("forms/rateClassForm", { title: "About *Insert CourseID here*"});
+    } catch (error) {
+      console.error("Error:", error);
+      next(new Error("Error Rendering"));
+    }
+  
+  }
+
 
 module.exports = baseController;
