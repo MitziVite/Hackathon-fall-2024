@@ -7,7 +7,7 @@ const static = require("./routes/routes")
 const baseController = require("./controllers/baseController")
 // const {Pool} = require('pg');
 // const inventoryRoute = require('./routes/inventoryRoute')
-const utilities = require('./utilities');
+// const utilities = require('./utilities');
 
 /* ***********************
  * Routes
