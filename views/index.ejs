@@ -1,89 +1,106 @@
-
-
 <div class="container-form">
-<form>
-
-    <label>Grades</label>
-    <div class="dropdown">  
-        <div class="select">
-            <span class="selected">Grades</span>
-            <div class="caret"></div>
+    <form>
+        <label>Grades</label>
+        <div class="dropdown">  
+            <div class="select">
+                <span class="selected">Grades</span>
+                <div class="caret"></div>
+            </div>
+            <ul class="menu">
+                <li>A+</li>
+                <li>A-</li>
+                <li>B+</li>
+                <li>B-</li>
+                <li>C+</li>
+                <li>C-</li>
+                <li>D</li>
+                <li>F</li>
+            </ul>
         </div>
-        <ul class="menu">
-            <li>A+</li>
-            <li>A-</li>
-            <li>B+</li>
-            <li>B-</li>
-            <li>C+</li>
-            <li>C-</li>
-            <li>D</li>
-            <li>F</li>
-        </ul>
-    </div>
-   
-  <br>
-  <div class="slidecontainer">
-    <p>Difficulty:</p>
-    <input type="range" min="1" max="100" value="50">
-  </div>
-  <div class="slidecontainer">
-    <p>Hours per week:</p>
-    <input type="range" min="1" max="100" value="50">
-  </div>
-  <label class="container">Final Project
-    <input type="checkbox">
-  <!--   <span class="checkmark"></span> -->
-  </label>
-  <label class="container">Final Test
-    <input type="checkbox">
-  <!--   <span class="checkmark"></span> -->
-  </label>
-  <label class="container">Multiple Projects
-    <input type="checkbox">
-  <!--   <span class="checkmark"></span> -->
-  </label>
-  <label class="container">Multiple Tests
-    <input type="checkbox">
-  <!--   <span class="checkmark"></span> -->
-  </label>
-  <label class="container">Midterm
-    <input type="checkbox">
-  <!--   <span class="checkmark"></span> -->
-  </label>
-  <div class="slidecontainer">
-    <p>Overall Satisfaction</p>
-    <input type="range" min="1" max="100" value="50">
-  </div>
-  <div class="radio-group">
-      <input type="radio" id="easy" name="difficulty" value="easy">
-      <label for="easy">Remote</label>
-      
-      <input type="radio" id="medium" name="difficulty" value="medium">
-      <label for="medium">In Person</label>
-    
-      
-      <input type="radio" id="hard" name="difficulty" value="hard">
-      <label for="hard">Hybrid</label>
-  </div>
-  <div class="radio-group">
-      <input type="radio" id="easy" name="difficulty" value="easy">
-      <label for="easy">1st Block</label>
-      
-      <input type="radio" id="medium" name="difficulty" value="medium">
-      <label for="medium">2nd Block</label>
-    
-      
-      <input type="radio" id="hard" name="difficulty" value="hard">
-      <label for="hard">Full</label>
-  </div>
-     <label for="grades">Teacher</label>
-      <select>
-      <option value="0">Brother Clemments</option>
-      <option value="1">Brother Helfrich</option>
-      <option value="2">Brother Birch</option>
-      <option value="3">Brother Barzee</option>
-      <option value="4">Sister Hensan</option>
-    </select>
-  </form>
+
+        <label>Difficulty</label>
+        <div class="slider-container">
+            <div class="range-slider" data-slider-id="difficulty-slider">
+                <span class="rs-bullet">0</span>
+                <input class="rs-range" type="range" value="0" min="0" max="5" step="0.5">
+            </div>
+            <div class="box-minmax">
+                <span>0</span><span>5</span>
+            </div>
+        </div>
+
+        <label>Hours per Week</label>
+        <div class="slider-container">
+            <div class="range-slider" data-slider-id="hours-slider">
+                <span class="rs-bullet">0</span>
+                <input class="rs-range" type="range" value="0" min="0" max="30" step="0.5">
+            </div>
+            <div class="box-minmax">
+                <span>0</span><span>30</span>
+            </div>
+        </div>
+
+        <label>Evaluation Type</label>
+        <div class="checkbox-group">
+            <label class="container-checkbox">Final Project
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container-checkbox">Final Test
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container-checkbox">Multiple Projects
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container-checkbox">Multiple Tests
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container-checkbox">Midterm
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+
+        <label>Overall Satisfaction</label>
+        <div class="slider-container">
+            <div class="range-slider" data-slider-id="satisfaction-slider">
+                <span class="rs-bullet">0</span>
+                <input class="rs-range" type="range" value="0" min="0" max="5" step="0.5">
+            </div>
+            <div class="box-minmax">
+                <span>0</span><span>5</span>
+            </div>
+        </div>
+
+        <label>Class Type</label>
+        <div class="radio-group">
+            <input type="radio" id="remote" name="class-type" value="remote">
+            <label for="remote" class="radio-label">Remote</label>
+
+            <input type="radio" id="in-person" name="class-type" value="in-person">
+            <label for="in-person" class="radio-label">In Person</label>
+
+            <input type="radio" id="hybrid" name="class-type" value="hybrid">
+            <label for="hybrid" class="radio-label">Hybrid</label>
+        </div>
+
+        <label>Teacher</label>
+        <div class="dropdown">  
+            <div class="select">
+                <span class="selected">Teacher</span>
+                <div class="caret"></div>
+            </div>
+            <ul class="menu">
+                <li>Brother Clemments</li>
+                <li>Brother Helfrich</li>
+                <li>Sister Hansen</li>
+                <li>Brother Briggs</li>
+                <li>Brother Birch</li>
+                <li>Brother Thompson</li>
+            </ul>
+        </div>
+    </form>
 </div>
-  
