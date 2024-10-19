@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "Rexy's Voice Extension",
+    "version": "1.0",
+    "description": "Discover what other students like you think about the classes your are planning to take",
+    "icons": {
+        "16": "images/16.png",
+        "32": "images/32.png",
+        "48": "images/48.png",
+        "128": "images/128.png"
+    },
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "content_scripts": [
+        {
+          "js": ["scripts/content.js"],
+          "matches": [
+            "https://iplan.byui.edu/grad_planner/*"
+          ]
+        }
+      ]
+
+} 
