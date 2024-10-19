@@ -13,7 +13,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f0f4f8; /* Color de fondo suave */
+  background-color: #f0f4f8;
+  /* Color de fondo suave */
 }
 
 main {
@@ -82,24 +83,32 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
-  padding: 20px; /* Espaciado alrededor del formulario */
+  min-height: calc(100vh - 120px);
+  /*height: 100vh;*/
+  padding: 20px;
+  /* Espaciado alrededor del formulario */
 }
 
 form {
   width: 100%;
-  max-width: 600px; /* Ampliar ancho máximo */
-  padding: 30px; /* Mayor padding para un mejor espacio interno */
-  background-color: #ffffff; /* Fondo blanco para el formulario */
-  border-radius: 10px; /* Borde más redondeado */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+  max-width: 600px;
+  /* Ampliar ancho máximo */
+  padding: 30px;
+  /* Mayor padding para un mejor espacio interno */
+  background-color: #ffffff;
+  /* Fondo blanco para el formulario */
+  border-radius: 10px;
+  /* Borde más redondeado */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* Sombra más sutil */
 }
 
 /* Dropdown */
 .dropdown {
   min-width: 15em;
   position: relative;
-  margin: 2em 0; /* Separación vertical entre dropdowns */
+  margin: 2em 0;
+  /* Separación vertical entre dropdowns */
 }
 
 .dropdown * {
@@ -277,7 +286,7 @@ form {
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-.container-checkbox input:checked ~ .checkmark {
+.container-checkbox input:checked~.checkmark {
   background-color: #4caf50;
   border-color: #4caf50;
 }
@@ -288,7 +297,7 @@ form {
   display: none;
 }
 
-.container-checkbox input:checked ~ .checkmark:after {
+.container-checkbox input:checked~.checkmark:after {
   display: block;
 }
 
@@ -323,7 +332,7 @@ form {
   display: none;
 }
 
-.radio-group input:checked + .radio-label {
+.radio-group input:checked+.radio-label {
   background-color: #4caf50;
   color: white;
   border-color: #4caf50;
@@ -331,36 +340,90 @@ form {
 
 
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
-        gap: 20px; /* Espaciado entre elementos */
-        background-color: #2B4D6A; /* Color de fondo del navbar */
-        position: absolute; /* Permite que el navbar se superponga */
-        top: 60px; /* Ajusta según la altura del encabezado */
-        right: 0; /* Alinea el navbar a la derecha */
-        width: 100%; /* Ancho completo */
-        display: none; /* Ocultar por defecto */
-        transition: display 0.3s ease; /* Animación suave para mostrar/ocultar */
-    }
+  .navbar {
+    flex-direction: column;
+    /* Cambia a columna en pantallas pequeñas */
+    gap: 20px;
+    /* Espaciado entre elementos */
+    background-color: #2B4D6A;
+    /* Color de fondo del navbar */
+    position: absolute;
+    /* Permite que el navbar se superponga */
+    top: 60px;
+    /* Ajusta según la altura del encabezado */
+    right: 0;
+    /* Alinea el navbar a la derecha */
+    width: 100%;
+    /* Ancho completo */
+    display: none;
+    /* Ocultar por defecto */
+    transition: display 0.3s ease;
+    /* Animación suave para mostrar/ocultar */
+  }
 
-    .navbar.active {
-        display: flex; /* Muestra el navbar al activarlo */
-    }
+  .navbar.active {
+    display: flex;
+    /* Muestra el navbar al activarlo */
+  }
 
-    /* Estilos del botón de menú */
-    .menu-toggle {
-        display: block; /* Muestra el botón de menú */
-        background-color: #2B4D6A; /* Color de fondo */
-        color: #FFD700; /* Color del texto */
-        border: none; /* Sin borde */
-        padding: 10px 15px; /* Espaciado */
-        cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    }
+  /* Estilos del botón de menú */
+  .menu-toggle {
+    display: block;
+    /* Muestra el botón de menú */
+    background-color: #2B4D6A;
+    /* Color de fondo */
+    color: #FFD700;
+    /* Color del texto */
+    border: none;
+    /* Sin borde */
+    padding: 10px 15px;
+    /* Espaciado */
+    cursor: pointer;
+    /* Cambia el cursor al pasar el mouse */
+  }
 }
 
 /* Estilos para el botón de menú */
 @media (min-width: 769px) {
-    .menu-toggle {
-        display: none; /* Oculta el botón en pantallas grandes */
-    }
+  .menu-toggle {
+    display: none;
+    /* Oculta el botón en pantallas grandes */
+  }
+}
+
+/*FOOTER*/
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer {
+  background-color: #2B4D6A;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  display: inline;
+  margin: 0 15px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
 }
