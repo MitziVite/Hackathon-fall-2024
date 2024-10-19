@@ -1,39 +1,42 @@
 <div class="container-form">
-    <form>
-        <label>Grades</label>
-        <div class="dropdown">  
-            <div class="select">
-                <span class="selected">Grades</span>
-                <div class="caret"></div>
+    <form action="/submit" method="POST"> <!-- Specify the action and method -->
+        <label for="grades">Grades</label>
+        <div class="select-wrapper">
+            <select id="grades" name="grades" class="styled-select">
+                <option value="" disabled selected>Select Grade</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="C+">C+</option>
+                <option value="C-">C-</option>
+                <option value="D">D</option>
+                <option value="F">F</option>
+            </select>
+            <div class="dropdown-icon">
+                <!-- Icono SVG para la flecha -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5H7z"/>
+                </svg>
             </div>
-            <ul class="menu">
-                <li>A+</li>
-                <li>A-</li>
-                <li>B+</li>
-                <li>B-</li>
-                <li>C+</li>
-                <li>C-</li>
-                <li>D</li>
-                <li>F</li>
-            </ul>
         </div>
 
-        <label>Difficulty</label>
+        <label for="difficulty">Difficulty</label>
         <div class="slider-container">
             <div class="range-slider" data-slider-id="difficulty-slider">
                 <span class="rs-bullet">0</span>
-                <input class="rs-range" type="range" value="0" min="0" max="5" step="0.5">
+                <input class="rs-range" type="range" name="difficulty" value="0" min="0" max="5" step="0.5">
             </div>
             <div class="box-minmax">
                 <span>0</span><span>5</span>
             </div>
         </div>
 
-        <label>Hours per Week</label>
+        <label for="hoursPerWeek">Hours per Week</label>
         <div class="slider-container">
             <div class="range-slider" data-slider-id="hours-slider">
                 <span class="rs-bullet">0</span>
-                <input class="rs-range" type="range" value="0" min="0" max="30" step="0.5">
+                <input class="rs-range" type="range" name="hoursPerWeek" value="0" min="0" max="30" step="0.5">
             </div>
             <div class="box-minmax">
                 <span>0</span><span>30</span>
@@ -43,32 +46,32 @@
         <label>Evaluation Type</label>
         <div class="checkbox-group">
             <label class="container-checkbox">Final Project
-                <input type="checkbox">
+                <input type="checkbox" name="finalProject">
                 <span class="checkmark"></span>
             </label>
             <label class="container-checkbox">Final Test
-                <input type="checkbox">
+                <input type="checkbox" name="finalTest">
                 <span class="checkmark"></span>
             </label>
             <label class="container-checkbox">Multiple Projects
-                <input type="checkbox">
+                <input type="checkbox" name="multipleProjects">
                 <span class="checkmark"></span>
             </label>
             <label class="container-checkbox">Multiple Tests
-                <input type="checkbox">
+                <input type="checkbox" name="multipleTests">
                 <span class="checkmark"></span>
             </label>
             <label class="container-checkbox">Midterm
-                <input type="checkbox">
+                <input type="checkbox" name="midterm">
                 <span class="checkmark"></span>
             </label>
         </div>
 
-        <label>Overall Satisfaction</label>
+        <label for="overallSatisfaction">Overall Satisfaction</label>
         <div class="slider-container">
             <div class="range-slider" data-slider-id="satisfaction-slider">
                 <span class="rs-bullet">0</span>
-                <input class="rs-range" type="range" value="0" min="0" max="5" step="0.5">
+                <input class="rs-range" type="range" name="overallSatisfaction" value="0" min="0" max="5" step="0.5">
             </div>
             <div class="box-minmax">
                 <span>0</span><span>5</span>
@@ -77,30 +80,38 @@
 
         <label>Class Type</label>
         <div class="radio-group">
-            <input type="radio" id="remote" name="class-type" value="remote">
+            <input type="radio" id="remote" name="classType" value="remote">
             <label for="remote" class="radio-label">Remote</label>
 
-            <input type="radio" id="in-person" name="class-type" value="in-person">
+            <input type="radio" id="in-person" name="classType" value="in-person">
             <label for="in-person" class="radio-label">In Person</label>
 
-            <input type="radio" id="hybrid" name="class-type" value="hybrid">
+            <input type="radio" id="hybrid" name="classType" value="hybrid">
             <label for="hybrid" class="radio-label">Hybrid</label>
         </div>
 
-        <label>Teacher</label>
-        <div class="dropdown">  
-            <div class="select">
-                <span class="selected">Teacher</span>
-                <div class="caret"></div>
+        <label for="teacher">Teacher</label>
+        <div class="select-wrapper">
+            <select id="teacher" name="teacher" class="styled-select">
+                <option value="" disabled selected>Select Teacher</option>
+                <option value="Brother Clemments">Brother Clemments</option>
+                <option value="Brother Helfrich">Brother Helfrich</option>
+                <option value="Sister Hansen">Sister Hansen</option>
+                <option value="Brother Briggs">Brother Briggs</option>
+                <option value="Brother Birch">Brother Birch</option>
+                <option value="Brother Thompson">Brother Thompson</option>
+            </select>
+            <div class="dropdown-icon">
+                <!-- Icono SVG para la flecha -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5H7z"/>
+                </svg>
             </div>
-            <ul class="menu">
-                <li>Brother Clemments</li>
-                <li>Brother Helfrich</li>
-                <li>Sister Hansen</li>
-                <li>Brother Briggs</li>
-                <li>Brother Birch</li>
-                <li>Brother Thompson</li>
-            </ul>
         </div>
+        <label for="comments">Comments</label>
+        <textarea id="comments" name="comments" rows="4" placeholder="Write your comments here..." class="styled-textarea"></textarea>
+
+        
+        <button type="submit" class="submit-button">Submit</button>
     </form>
 </div>
