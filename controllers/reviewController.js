@@ -1,5 +1,4 @@
 const Review = require('../models/reviewModel.js');
-
 const createReview = async function (req, res, next) {
     review = new Review(req.body);
     review.createReview();
