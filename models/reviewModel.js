@@ -13,7 +13,7 @@ connectDB()
     });
 
 class Review {
-    constructor({ codeClass = undefined, grades = undefined, difficulty = undefined, hoursPerWeek = undefined, finalProject = undefined, finalTest = undefined, overallSatisfaction = undefined, onlinevsperson = undefined, term = undefined, teacher = undefined } = {}) {
+    constructor({ codeClass = undefined, grades = undefined, difficulty = undefined, hoursPerWeek = undefined, finalProject = undefined, finalTest = undefined, overallSatisfaction = undefined, onlinevsperson = undefined, term = undefined, teacher = undefined, comment = undefined } = {}) {
         this.codeClass = codeClass;
         this.grades = grades;
         this.difficulty = difficulty;
@@ -24,6 +24,7 @@ class Review {
         this.onlinevsperson = onlinevsperson;
         this.term = term;
         this.teacher = teacher;
+        this.comment = comment;
         this.db = db;
     }
 
@@ -62,7 +63,8 @@ class Review {
             overallSatisfaction: this.overallSatisfaction,
             onlinevsperson: this.onlinevsperson,
             term: this.term,
-            teacher: this.teacher
+            teacher: this.teacher,
+            comment: this.comment
         };
         var result = await this.db.collection('reviews').insertOne(obj);
     }
