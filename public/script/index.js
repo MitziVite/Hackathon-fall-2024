@@ -4,8 +4,6 @@
         navbar.classList.toggle('active');
     }
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
     initDropdowns();
     initSliders();
@@ -84,3 +82,26 @@ function updateSliderValue(rangeInput, bullet) {
     const bulletPosition = (value / rangeInput.max) * (rangeInput.clientWidth - bullet.clientWidth);
     bullet.style.left = `${bulletPosition}px`;
 }
+
+
+const images = [
+    "url('/images/background/icenter.jpg')",
+    "url('/images/background/stc.jpg')",
+    "url('/images/background/taylor-building.jpg')",
+];
+
+let currentIndex = 0;
+const backgroundImage = document.getElementById('backgroundImageId');
+
+function changeBackgroundImage() {
+    // Cambiar la imagen de fondo
+    backgroundImage.style.backgroundImage = images[currentIndex];
+    // Incrementar el índice de la imagen
+    currentIndex = (currentIndex + 1) % images.length;
+}
+
+// Cambiar la imagen de fondo cada 8 segundos
+setInterval(changeBackgroundImage, 6000);
+
+// Iniciar con la primera imagen
+changeBackgroundImage();
