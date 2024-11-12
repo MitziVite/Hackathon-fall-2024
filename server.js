@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", utilities.handleErrors(baseController.buildHome));
 
 // View Routes 
-app.get("/about", utilities.handleErrors(baseController.buildDetails));
+app.get("/about/:ccid", utilities.handleErrors(baseController.buildDetails));
 app.get("/forms/rateClassForm", utilities.handleErrors(baseController.buildForm));
 // View Routes 
 app.get("/review", utilities.handleErrors(baseController.submitReview));
