@@ -1,32 +1,35 @@
 
-<div class="review-container">
-    <label class="label" for="ccid">CCID:</label>
-    <input class="input-text" type="text" id="ccid" name="ccid">
+<div class="about-container">
+    <div class="course_details">
+        <div class="code-title">
+            <h1 id ="ccid"><%-ccid%></h1>
+            <h2 id ="title"><%-title%></h2> 
+        </div>
 
-    <label class="label" for="title">Title:</label>
-    <input class="input-text" type="text" id="title" name="title">
+        <h4>Department: </h4> 
+        <span id="department"><%-department%></span>
 
-    <label class="label" for="department">Department:</label>
-    <input class="input-text" type="text" id="department" name="department">
+        <h4>Credits: </h4> 
+        <span id="credits"><%-credits%></span>
 
-    <label class="label" for="credits">Credits:</label>
-    <input class="input-number" type="number" id="credits" name="credits">
+        <h4>Class description: </h4>
+        <span id="description"><%-description%></span>
 
-    <label class="label" for="description">Description:</label>
-    <textarea class="input-textarea" id="description" name="description"></textarea>
+        <h4>Can be audited</h4>
+        <span id="audit"><%-audit%></span>
+        
+        <h4>Course Learning Outcomes</h4>
+        <span id="clos">insert list here</span>
 
-    <label class="label" for="audit">Audit:</label>
-    <input class="input-checkbox" type="checkbox" id="audit" name="audit">
-
-    <label class="label" for="clos">CLOs:</label>
-    <input class="input-text" type="text" id="clos" name="clos">
-
-    <label class="label" for="prerequisites">Prerequisites:</label>
-    <input class="input-text" type="text" id="prerequisites" name="prerequisites">
-
-    <label class="label" for="reviews">Reviews:</label>
-    <input class="input-text" type="text" id="reviews" name="reviews">
-
-    <label class="label" for="satisfaction">Satisfaction:</label>
-    <input class="input-number" type="number" id="satisfaction" name="satisfaction" min="1" max="5">
+        <h4>Prerequesits</h4>
+        <%if (prereq) {%>
+            <span id="prereq"><%-prereq%></span> 
+        <%}else {%>
+            <span id="prereq">None</span> 
+        <%}%>
+    </div>
+    
+    <div class="course_reviews">
+        <p>Add reviews here</p>
+    </div>
 </div>

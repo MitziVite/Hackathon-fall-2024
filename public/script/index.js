@@ -1,8 +1,8 @@
 
-    function toggleMenu() {
-        const navbar = document.getElementById('navbar');
-        navbar.classList.toggle('active');
-    }
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     initDropdowns();
@@ -105,3 +105,13 @@ setInterval(changeBackgroundImage, 6000);
 
 // Iniciar con la primera imagen
 changeBackgroundImage();
+
+
+var searchTerm = document.getElementById('courseCode')
+var searchButton = document.getElementById('submitSearch')
+searchButton.addEventListener('click', function(event) {
+    var ccid = searchTerm.value;
+    console.log('searching for course code', ccid);
+    ccid = ccid.toUpperCase().replaceAll(' ', '');
+    window.location.href = '/about/' + ccid;
+})
