@@ -111,7 +111,15 @@ var searchTerm = document.getElementById('courseCode')
 var searchButton = document.getElementById('submitSearch')
 searchButton.addEventListener('click', function(event) {
     var ccid = searchTerm.value;
-    console.log('searching for course code', ccid);
     ccid = ccid.toUpperCase().replaceAll(' ', '');
     window.location.href = '/about/' + ccid;
+})
+
+var input = document.getElementById('courseCode');
+input.addEventListener('keypress', function(event) {
+    if (event.key == 'Enter'){
+        var ccid = input.value;
+        ccid = ccid.toUpperCase().replaceAll(' ', '');
+        window.location.href = '/about/' + ccid;
+    }
 })
