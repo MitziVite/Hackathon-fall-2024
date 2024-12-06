@@ -1,5 +1,6 @@
 const baseController = {}
 const Review = require("../models/reviewModel")
+const Util = require("../utilities/index")
 
 
 baseController.buildHome = async function(req, res, next) {
@@ -17,9 +18,12 @@ baseController.buildDetails = async function(req, res, next) {
     const review = new Review();
     const ccid = req.params.ccid.toUpperCase();
     
-    ans = await review.getClassesWithReviews(ccid);
-    console.log(ans[0]
-    )
+    var ans = await review.getClassesWithReviews(ccid);
+    const clos = ans[0]['outcomes']
+ 
+    var closHTML = Util.createOutcomes(clos)
+
+
     res.render("about", { 
       title: ans[0]['title'],
       ccid,
@@ -27,7 +31,8 @@ baseController.buildDetails = async function(req, res, next) {
       audit: ans[0]['disallowAudit2'],
       credits: ans[0]['credits']['value'],
       department: ans[0]['department']['name'],
-      prereq: ans[0]['prerequisites']
+      prereq: ans[0]['prerequisites'],
+      clos: closHTML
 
     });
   } catch (error) {
