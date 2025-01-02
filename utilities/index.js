@@ -3,9 +3,7 @@ const Util = {};
 
 // Genera el formulario HTML dinámicamente
 Util.getNav = async function (req, res, next) {
-    let data = await revModel.getClassifications()
     
-
     return formHTML;
 };
 
