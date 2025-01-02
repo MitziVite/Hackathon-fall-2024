@@ -22,8 +22,7 @@ baseController.buildDetails = async function(req, res, next) {
     const clos = ans[0]['outcomes']
  
     var closHTML = Util.createOutcomes(clos)
-
-
+    var reviews = await Util.getReviews(ccid)
     res.render("about", { 
       title: ans[0]['title'],
       ccid,
@@ -32,7 +31,8 @@ baseController.buildDetails = async function(req, res, next) {
       credits: ans[0]['credits']['value'],
       department: ans[0]['department']['name'],
       prereq: ans[0]['prerequisites'],
-      clos: closHTML
+      clos: closHTML,
+      reviews
 
     });
   } catch (error) {
@@ -50,7 +50,7 @@ baseController.buildForm = async function(req, res, next) {
       next(new Error("Error Rendering"));
     }
   
-  }
+}
 
 
 module.exports = baseController;

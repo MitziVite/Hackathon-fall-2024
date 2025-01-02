@@ -30,6 +30,10 @@
     </div>
     
     <div class="course_reviews">
-        <p>Add reviews here</p>
+        <%if (reviews) {%>
+            <%-reviews%>
+        <%}else {%>
+            <p>No reviews yet</p> 
+        <%}%>
     </div>
 </div>

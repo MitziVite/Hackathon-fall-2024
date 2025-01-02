@@ -1,4 +1,7 @@
 const express = require('express');
+const aboutRoutes = require('./aboutRoutes')
+const reviewRoutes = require('./reveiwRoutes')
+const utilities = require("../utilities");
 const baseController = require('../controllers/baseController');
 const reviewController = require('../controllers/reviewController');
 const router = express.Router();
@@ -12,7 +15,12 @@ router.use("/css", express.static(__dirname + "public/css"));
 router.use("/js", express.static(__dirname + "public/js"));
 router.use("/images", express.static(__dirname + "public/images"));
 
-router.get("/", baseController.buildHome);
+// Frontend Routes
+router.get("/", utilities.handleErrors(baseController.buildHome));
+router.use("/about", utilities.handleErrors(aboutRoutes));
+router.use("/forms", utilities.handleErrors(reviewRoutes));
+
+// Backend Routes
 router.post("/createReview", jsonMiddleware, reviewController.createReview);
 router.get("/getCourseReview", jsonMiddleware, reviewController.getReview);
 router.get("/getCourseDetails", jsonMiddleware, reviewController.getCourseDetails);
