@@ -2,18 +2,11 @@
 const expressLayouts = require('express-ejs-layouts');
 const express = require("express")
 const cors = require("cors");
-
 const env = require("dotenv").config()
 const app = express()
-const static = require("./routes/routes")
+const routes = require("./routes/routes")
 const utilities = require("./utilities");
-const baseController = require("./controllers/baseController")
-const reviewController = require("./controllers/reviewController")
 const bodyParser = require("body-parser");
-
-// const {Pool} = require('pg');
-// const inventoryRoute = require('./routes/inventoryRoute')
-// const utilities = require('./utilities');
 
 
 /* ***********************
@@ -23,24 +16,14 @@ app.use(cors());
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', '../layouts/layout');
-app.use(static)
+app.use(routes)
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // Index route
-app.get("/", utilities.handleErrors(baseController.buildHome));
-
-// View Routes 
-app.get("/about/:ccid", utilities.handleErrors(baseController.buildDetails));
-app.get("/forms/rateClassForm", utilities.handleErrors(baseController.buildForm));
-// View Routes 
-app.get("/review", utilities.handleErrors(baseController.submitReview));
+app.get("/", utilities.handleErrors(routes));
 
 
-// app.get('/create-review', (req, res) => {
-//     const formHTML = Util.generateForm();
-//     res.send(formHTML);
-// });
 app.post("/submit", (req, res) => {
     // Get the form data
     const { grades, difficulty, hoursPerWeek, finalProject, finalTest, overallSatisfaction, onlinevsperson, term, teacher } = req.body;
