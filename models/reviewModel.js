@@ -13,7 +13,13 @@ connectDB()
     });
 
 class Review {
-    constructor({ codeClass = undefined, grades = undefined, difficulty = undefined, hoursPerWeek = undefined, finalProject = undefined, finalTest = undefined, overallSatisfaction = undefined, onlinevsperson = undefined, term = undefined, teacher = undefined, comment = undefined, multipleTests = undefined, multipleProjects = undefined } = {}) {
+    constructor({ 
+                codeClass = undefined, grades = undefined, difficulty = undefined, 
+                hoursPerWeek = undefined, finalProject = undefined, finalTest = undefined, 
+                overallSatisfaction = undefined, onlinevsperson = undefined, term = undefined, 
+                teacher = undefined, comment = undefined, multipleTests = undefined, 
+                multipleProjects = undefined } = {}) {
+
         this.codeClass = codeClass;
         this.grades = grades;
         this.difficulty = difficulty;
@@ -33,7 +39,7 @@ class Review {
 
 
     async getAverages(codeClass) {
-        const collection = await this.db.collection('reviews'); // Replace with your collection name
+        const collection = await this.db.collection('reviews'); 
 
         const averages = await collection.aggregate([
             { $match: { codeClass } },

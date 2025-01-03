@@ -1,6 +1,8 @@
 const Review = require('../models/reviewModel.js');
+
+
 const createReview = async function (req, res, next) {
-    post = req.body
+    let post = req.body
     form = {
         codeClass: post.codeClass,
         grades: post.grades,
