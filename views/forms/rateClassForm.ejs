@@ -1,8 +1,8 @@
 <div class="container-form" >
     <form action="/submit" method="POST">
         <h2>Tell us about your experiance</h2>
-        <label for="class">Class</label>
-        <input type="text" id="classInput" name="class" rows="1" placeholder="Example: BIO 180" class="styled-textarea"></input>
+        <label for="codeClass">Class Code</label>
+        <input type="text" id="classInput" name="codeClass" rows="1" placeholder="Example: BIO 180" class="styled-textarea"></input>
         <label for="grades">Grades</label>
         <div class="select-wrapper">
             <select id="grades" name="grades" class="styled-select">
@@ -46,26 +46,26 @@
             </div>
         </div>
 
-        <label>Evaluation Type</label>
+        <label for="evaluationType">Evaluation Type</label>
         <div class="checkbox-group">
             <label class="container-checkbox">Final Project
-                <input type="checkbox" name="finalProject">
+                <input type="checkbox" name="evaluationType" value="Final Project">
                 <span class="checkmark"></span>
             </label>
             <label class="container-checkbox">Final Test
-                <input type="checkbox" name="finalTest">
+                <input type="checkbox" name="evaluationType" value="Final Test">
                 <span class="checkmark"></span>
             </label>
             <label class="container-checkbox">Multiple Projects
-                <input type="checkbox" name="multipleProjects">
+                <input type="checkbox" name="evaluationType" value="Multiple Projects">
                 <span class="checkmark"></span>
             </label>
             <label class="container-checkbox">Multiple Tests
-                <input type="checkbox" name="multipleTests">
+                <input type="checkbox" name="evaluationType" value="Multiple Tests">
                 <span class="checkmark"></span>
             </label>
             <label class="container-checkbox">Midterm
-                <input type="checkbox" name="midterm">
+                <input type="checkbox" name="evaluationType" value="Midterm">
                 <span class="checkmark"></span>
             </label>
         </div>
@@ -94,22 +94,8 @@
         </div>
 
         <label for="teacher">Teacher</label>
-        <div class="select-wrapper">
-            <select id="teacher" name="teacher" class="styled-select">
-                <option value="" disabled selected>Select Teacher</option>
-                <option value="Brother Clemments">Brother Clemments</option>
-                <option value="Brother Helfrich">Brother Helfrich</option>
-                <option value="Sister Hansen">Sister Hansen</option>
-                <option value="Brother Briggs">Brother Briggs</option>
-                <option value="Brother Birch">Brother Birch</option>
-                <option value="Brother Thompson">Brother Thompson</option>
-            </select>
-            <div class="dropdown-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M7 10l5 5 5-5H7z"/>
-                </svg>
-            </div>
-        </div>
+        <input type="text" id="teacher" name="teacher" rows="1" placeholder="Example: Bro. Brown" class="styled-textarea"></input>
+
         <label for="comments">Comments</label>
         <textarea id="comments" name="comments" rows="4" placeholder="Write your comments here..." class="styled-textarea"></textarea>
 

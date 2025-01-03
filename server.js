@@ -26,10 +26,30 @@ app.get("/", utilities.handleErrors(routes));
 
 app.post("/submit", (req, res) => {
     // Get the form data
-    const { grades, difficulty, hoursPerWeek, finalProject, finalTest, overallSatisfaction, onlinevsperson, term, teacher } = req.body;
+    const { 
+      codeClass,
+      grades,
+      difficulty,
+      hoursPerWeek,
+      evaluationType,      
+      overallSatisfaction,
+      classType,
+      teacher,
+      comments
+      } = req.body;
     
     // Here you can process the data, save it to a database, etc.
     console.log("Form submitted:", req.body);
+    console.log(
+      codeClass,
+      grades,
+      difficulty,
+      hoursPerWeek,
+      evaluationType,
+      overallSatisfaction,
+      classType,
+      teacher,
+      comments)
 
     // Redirect to a success page or send a response
     res.send("Form received successfully.");
