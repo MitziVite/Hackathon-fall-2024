@@ -3,6 +3,26 @@
         <h2>Tell us about your experiance</h2>
         <label for="codeClass">Class Code</label>
         <input type="text" id="classInput" name="codeClass" rows="1" placeholder="Example: BIO 180" class="styled-textarea"></input>
+        <label for="semester">Semester taken</label>
+        <div class="select-wrapper">
+            <select id="semester" name="semester" class="styled-select">
+                <option value="" disabled selected>Select Semester</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer Session">Summer Session</option>
+            </select>
+            <div class="dropdown-icon">
+               
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5H7z"/>
+                </svg>
+            </div>
+        </div>
+        <label for="year">Year taken</label>
+        <input type="text" id="year" name="year" rows="1" placeholder="2024" class="styled-textarea"></input>
+        
+
         <label for="grades">Grades</label>
         <div class="select-wrapper">
             <select id="grades" name="grades" class="styled-select">

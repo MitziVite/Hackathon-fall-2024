@@ -7,7 +7,7 @@ const app = express()
 const routes = require("./routes/routes")
 const utilities = require("./utilities");
 const bodyParser = require("body-parser");
-
+const reviewController = require("./controllers/reviewController")
 
 /* ***********************
  * Routes
@@ -23,37 +23,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Index route
 app.get("/", utilities.handleErrors(routes));
 
+app.post("/submit", reviewController.createReview)
 
-app.post("/submit", (req, res) => {
+//app.post("/submit", (req, res) => {
     // Get the form data
-    const { 
-      codeClass,
-      grades,
-      difficulty,
-      hoursPerWeek,
-      evaluationType,      
-      overallSatisfaction,
-      classType,
-      teacher,
-      comments
-      } = req.body;
+//     const { 
+//       codeClass,
+//       semester, 
+//       year,
+//       grades,
+//       difficulty,
+//       hoursPerWeek,
+//       evaluationType,      
+//       overallSatisfaction,
+//       classType,
+//       teacher,
+//       comments
+//       } = req.body;
     
-    // Here you can process the data, save it to a database, etc.
-    console.log("Form submitted:", req.body);
-    console.log(
-      codeClass,
-      grades,
-      difficulty,
-      hoursPerWeek,
-      evaluationType,
-      overallSatisfaction,
-      classType,
-      teacher,
-      comments)
+//     // Here you can process the data, save it to a database, etc.
+//     reviewController.createReview();
 
-    // Redirect to a success page or send a response
-    res.send("Form received successfully.");
-});
+//     // Redirect to a success page or send a response
+//     res.send("Form received successfully.");
+// });
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

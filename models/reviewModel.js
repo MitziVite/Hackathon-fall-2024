@@ -14,26 +14,31 @@ connectDB()
 
 class Review {
     constructor({ 
-                codeClass = undefined, grades = undefined, difficulty = undefined, 
-                hoursPerWeek = undefined, finalProject = undefined, finalTest = undefined, 
-                overallSatisfaction = undefined, onlinevsperson = undefined, term = undefined, 
-                teacher = undefined, comment = undefined, multipleTests = undefined, 
-                multipleProjects = undefined } = {}) {
+        codeClass = undefined,
+        semester = undefined,
+        year = undefined,
+        grades = undefined,
+        difficulty = undefined,
+        hoursPerWeek = undefined,
+        evaluationType = undefined,
+        overallSatisfaction = undefined,
+        onlinevsperson = undefined,
+        teacher = undefined,
+        comment = undefined,
+        db = undefined } = {}) {
 
-        this.codeClass = codeClass;
-        this.grades = grades;
-        this.difficulty = difficulty;
-        this.hoursPerWeek = hoursPerWeek;
-        this.finalProject = finalProject;
-        this.finalTest = finalTest;
-        this.overallSatisfaction = overallSatisfaction;
-        this.onlinevsperson = onlinevsperson;
-        this.term = term;
-        this.teacher = teacher;
-        this.comment = comment;
-        this.multipleProjects = multipleProjects;
-        this.multipleTests = multipleTests;
-        this.db = db;
+        this.codeClass = codeClass,
+        this.semester = semester,
+        this.year = year,
+        this.grades = grades,
+        this.difficulty = difficulty,
+        this.hoursPerWeek = hoursPerWeek,
+        this.evaluationType = evaluationType,
+        this.overallSatisfaction = overallSatisfaction,
+        this.onlinevsperson = onlinevsperson,
+        this.teacher = teacher,
+        this.comment = comment,
+        this.db = db
     }
 
 
@@ -61,22 +66,21 @@ class Review {
     }
 
     async createReview() {
-        var obj = {
+        let obj = {
             codeClass: this.codeClass,
+            semester: this.semester,
+            year: this.year,
             grades: this.grades,
             difficulty: this.difficulty,
             hoursPerWeek: this.hoursPerWeek,
-            finalProject: this.finalProject,
-            finalTest: this.finalTest,
+            evaluationType: this.evaluationType,
             overallSatisfaction: this.overallSatisfaction,
             onlinevsperson: this.onlinevsperson,
-            term: this.term,
             teacher: this.teacher,
             comment: this.comment,
-            multipleProjects: this.multipleProjects,
-            multipleTests: this.multipleTests
         };
-        var result = await this.db.collection('reviews').insertOne(obj);
+        let result = await this.db.collection('reviews').insertOne(obj);
+        console.log(result)
     }
     
     async getClassesWithReviews(codeClass) {
