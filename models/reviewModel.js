@@ -24,8 +24,7 @@ class Review {
         overallSatisfaction = undefined,
         onlinevsperson = undefined,
         teacher = undefined,
-        comment = undefined,
-        db = undefined } = {}) {
+        comment = undefined} = {}) {
 
         this.codeClass = codeClass,
         this.semester = semester,
@@ -79,7 +78,8 @@ class Review {
             teacher: this.teacher,
             comment: this.comment,
         };
-        let result = await this.db.collection('reviews').insertOne(obj);
+        let reviews = this.db.collection('reviews')
+        let result = await reviews.insertOne(obj);
         console.log(result)
     }
     
