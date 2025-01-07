@@ -1,17 +1,17 @@
 const { connectDB } = require('../database');
 
-// Define the review structure (no strict schema like Mongoose)
 
 var db = null;
 
 connectDB()
-    .then(result => {
-        db = result; // "Hello, World!"
-    })
-    .catch(error => {
-        console.error(error);
-    });
+.then(result => {
+    db = result; // "Hello, World!"
+})
+.catch(error => {
+    console.error(error);
+});
 
+// Define the review structure (no strict schema like Mongoose)
 class Review {
     constructor({ 
         codeClass = undefined,

@@ -6,7 +6,6 @@ const baseController = require('../controllers/baseController');
 const reviewController = require('../controllers/reviewController');
 const router = express.Router();
 
-const jsonMiddleware = express.json();
 
 // Static Routes
 // Set up "public" folder / subfolders for static files
@@ -21,9 +20,10 @@ router.use("/about", utilities.handleErrors(aboutRoutes));
 router.use("/forms", utilities.handleErrors(reviewRoutes));
 
 // Backend Routes
-router.post("/createReview", jsonMiddleware, reviewController.createReview);
-router.get("/getCourseReview", jsonMiddleware, reviewController.getReview);
-router.get("/getCourseDetails", jsonMiddleware, reviewController.getCourseDetails);
+router.post("/submit", reviewController.createReview);
+router.post("/createReview", reviewController.createReview);
+router.get("/getCourseReview", reviewController.getReview);
+router.get("/getCourseDetails", reviewController.getCourseDetails);
 
 
 module.exports = router;
