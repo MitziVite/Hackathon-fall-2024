@@ -7,7 +7,6 @@ const app = express()
 const routes = require("./routes/routes")
 const utilities = require("./utilities");
 const bodyParser = require("body-parser");
-const reviewController = require("./controllers/reviewController")
 
 /* ***********************
  * Routes
@@ -16,37 +15,15 @@ app.use(cors());
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', '../layouts/layout');
-app.use(routes)
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.json())
+app.use(routes);
 
 
 // Index route
 app.get("/", utilities.handleErrors(routes));
 
-app.post("/submit", reviewController.createReview)
 
-//app.post("/submit", (req, res) => {
-    // Get the form data
-//     const { 
-//       codeClass,
-//       semester, 
-//       year,
-//       grades,
-//       difficulty,
-//       hoursPerWeek,
-//       evaluationType,      
-//       overallSatisfaction,
-//       classType,
-//       teacher,
-//       comments
-//       } = req.body;
-    
-//     // Here you can process the data, save it to a database, etc.
-//     reviewController.createReview();
-
-//     // Redirect to a success page or send a response
-//     res.send("Form received successfully.");
-// });
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
