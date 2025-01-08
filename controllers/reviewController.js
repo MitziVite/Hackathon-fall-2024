@@ -19,8 +19,7 @@ const createReview = async function (req, res, next) {
     }
     let review = new Review(form);
     review.createReview();
-    res.status(200).json();
-    return ''; // Return the created review
+    res.render("index", { title: "Search for Courses"});
 };
 
 const getReview = async function (req, res, next) {
