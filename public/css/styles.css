@@ -8,6 +8,8 @@
   1.4 Navigation
   1.5 Body
   1.6 Footer
+  1.7 Flash Messages
+  1.8 Error Messages
 2. Form Styles
   2.1 
 3. About Page
@@ -181,6 +183,36 @@ body {
   text-decoration: underline;
 }
 
+/* 1.7 Flash Messages */
+.message {
+  border: 1px solid #4CAF50; 
+  background-color: #DFF2BF;
+  color: #4CAF50;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.warning {
+  border: 1px solid #FFA500; 
+  background-color: #FFFAE6; 
+  color: black;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+/* 1.8 Error Messages */
+.error-message,  .notice{
+  border: 1px solid #f44336; 
+  background-color: #FFD2D2;
+  color: #f44336;
+  margin-bottom: 15px;
+  padding: 15px;
+} 
+
+:disabled {
+  background: #a00;
+  color: white
+}
 
 /*************************
 2. Form Styles
