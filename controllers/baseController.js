@@ -5,6 +5,7 @@ const Util = require("../utilities/index")
 
 baseController.buildHome = async function(req, res, next) {
     try {
+      req.flash('message', 'Welcome to our website')
       res.render("index", { title: "Search for Courses"});
     } catch (error) {
       console.error("Error:", error);
