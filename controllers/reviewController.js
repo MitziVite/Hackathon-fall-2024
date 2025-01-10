@@ -19,7 +19,8 @@ const createReview = async function (req, res, next) {
     }
     let review = new Review(form);
     review.createReview();
-    res.render("index", { title: "Search for Courses"});
+    req.flash('message', 'Your feedback was saved successfully')
+    res.redirect("/");
 };
 
 const getReview = async function (req, res, next) {
