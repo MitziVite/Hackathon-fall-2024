@@ -37,6 +37,7 @@ baseController.buildDetails = async function(req, res, next) {
 
     });
   } catch (error) {
+    req.flash('warning', "We currently don't have the class you are looking for")
     console.error("Error:", error);
     next(new Error("Error Rendering"));
   }
