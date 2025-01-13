@@ -186,8 +186,8 @@ body {
 /* 1.7 Flash Messages */
 .message {
   border: 1px solid #4CAF50; 
-  background-color: #f9f9fa;
-  color: #00802f;
+  background-color: #00802f;
+  color: #f9f9fa;
   margin-bottom: 15px;
   padding: 15px;
 }

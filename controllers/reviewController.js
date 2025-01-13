@@ -15,7 +15,7 @@ const createReview = async function (req, res, next) {
             overallSatisfaction: post.overallSatisfaction,
             onlinevsperson: post.classType,
             teacher: post.teacher,
-            comment: post.comment,
+            comment: post.comments,
             db: post.db
         }
         let review = new Review(form);
