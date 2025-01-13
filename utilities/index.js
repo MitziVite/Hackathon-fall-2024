@@ -43,8 +43,8 @@ Util.getReviews = async function(courseID){
 
     var result = await fetch(`https://rexysvoice.us/getCourseDetails?courseID=${courseID}`)
     result = await result.json()
-    reviews = result[0]['reviews']
-
+    let reviews = result[0]['reviews']
+    console.log(reviews)
     var reviewsHTML = '<ul>'
 
     reviews.forEach((review) =>{
@@ -62,6 +62,10 @@ Util.getReviews = async function(courseID){
         reviewHTML += '<h3>Semester:</h3> <p> ' + review['term'] + '</p>'
         reviewHTML += (review['finalTest'] == 1) ? '<h3>Final Test:</h3> <p> Yes </p>': '<h3>Final Test:</h3> <p> No </p>'
         reviewHTML += (review['finalProject'] == 1) ? '<h3>Final Project:</h3> <p> Yes </p>': '<h3>Final Project:</h3> <p> No </p>'
+        reviewHTML += '<h3>Evaluation types</h3>'
+        reviewHTML += review['evaluationType']
+        // reviewHTML += '<ul>' + (review['evaluationType'].forEach((evaluation)=> '<li>' + evaluation + '</li>')) + '</ul>'
+        reviewHTML += (review['comment'] == null) ? '': '<h3>Comments:</h3> <p> ' + review['comment'] +' </p>'
         reviewHTML += '</div>'
         reviewHTML += '</li>'
         reviewsHTML += reviewHTML
