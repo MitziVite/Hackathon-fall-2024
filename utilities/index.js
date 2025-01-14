@@ -50,24 +50,33 @@ Util.getReviews = async function(courseID){
     reviews.forEach((review) =>{
         var reviewHTML = '<li>'
         reviewHTML += '<div id = reviewCard>'
-        reviewHTML += '<div class = briefReview>'
+        reviewHTML += '<div class = reviewStats>'
         reviewHTML += '<h3>Difficulty:</h3> <p> '+ review['difficulty'] + '</p>'
         reviewHTML += '<h3>Satisfaction:</h3> <p> ' + review['overallSatisfaction'] + '</p>'
         reviewHTML += '<h3>Hours per week:</h3> <p> ' + review['hoursPerWeek'] + '</p>'
         reviewHTML += '</div>'
         reviewHTML += '<hr>'
         reviewHTML += '<div class = mainReview >'
+        reviewHTML += '<div class = briefReview >'
         reviewHTML += '<h3>Grade:</h3> <p> ' + review['grades'] + '</p>'
         reviewHTML += '<h3>Teacher:</h3> <p> ' + review['teacher'] + '</p>'
         reviewHTML += '<h3>Semester:</h3> <p> ' + review['term'] + '</p>'
-        reviewHTML += (review['finalTest'] == 1) ? '<h3>Final Test:</h3> <p> Yes </p>': '<h3>Final Test:</h3> <p> No </p>'
-        reviewHTML += (review['finalProject'] == 1) ? '<h3>Final Project:</h3> <p> Yes </p>': '<h3>Final Project:</h3> <p> No </p>'
-        reviewHTML += '<h3>Evaluation types</h3>'
-        reviewHTML += review['evaluationType']
-        // reviewHTML += '<ul>' + (review['evaluationType'].forEach((evaluation)=> '<li>' + evaluation + '</li>')) + '</ul>'
+        if (review['evaluationType'] != null) {
+            
+            reviewHTML += '<h3>Evaluation Types:</h3>'
+            // reviewHTML += review['evaluationType']
+            reviewHTML += '<ul>'
+            review['evaluationType'].forEach((evaluation)=>{ 
+                reviewHTML += '<li>' + evaluation + '</li>'
+            })
+        }
+        reviewHTML += '</ul>'
+        reviewHTML += '</div>'
+        reviewHTML += '<div class= comments>'
         reviewHTML += (review['comment'] == null) ? '': '<h3>Comments:</h3> <p> ' + review['comment'] +' </p>'
         reviewHTML += '</div>'
         reviewHTML += '</li>'
+        reviewHTML += '</div>'
         reviewsHTML += reviewHTML
     })
     reviewsHTML += '</ul>'

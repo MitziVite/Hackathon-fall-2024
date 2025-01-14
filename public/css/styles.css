@@ -548,8 +548,12 @@ form {
     padding: 4px
   }
 }
-
-.briefReview{
+.mainReview{
+  display : flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.reviewStats{
   display : flex;
   justify-content: center;
   align-items: center;
@@ -557,12 +561,10 @@ form {
     padding: 7px
   }
 }
-.mainReview{
-  display : flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
+
+
+
+
 
 
 /*************************
