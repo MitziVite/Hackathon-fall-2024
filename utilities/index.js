@@ -100,16 +100,16 @@ Util.getReviews = async function(courseID) {
         reviewHTML += '<div class="reviewStats">';
         
         // Avatar and Customer Info
-        reviewHTML += '<img src="' + (review['teacherAvatar'] || 'https://via.placeholder.com/40') + '" alt="' + review['teacher'] + '" class="avatar">'; // Placeholder if no avatar available
         reviewHTML += '<div>';
-        reviewHTML += '<h3 class="customer-name">' + review['teacher'] + '</h3>';
-        reviewHTML += '<p class="review-date">' + review['term'] + '</p>'; // Using term as review date
+        reviewHTML += '<h3 class="customer-name">Teacher: ' + review['teacher'] + '</h3>';
+        reviewHTML += '<p class="review-date">Term: ' + review['term'] + '</p>'; // Using term as review date
         reviewHTML += '</div>';
         
         reviewHTML += '</div>'; // Closing reviewStats
         
         // Rating
         reviewHTML += '<div class="rating">';
+        reviewHTML += '<p>Satisfaction: </p>';
         const starCount = Math.round(review['overallSatisfaction'] / 2); // Assuming a 0-10 scale for overallSatisfaction
         for (let i = 0; i < 5; i++) {
             reviewHTML += '<span class="star' + (i < starCount ? ' filled' : '') + '">★</span>';
@@ -143,14 +143,19 @@ Util.getReviews = async function(courseID) {
         reviewHTML += '<p>' + (review['hoursPerWeek'] || 'N/A') + '</p>';
 
         // Adding Evaluation Types (if available)
-        if (review['evaluationType'] && review['evaluationType'].length > 0) {
+        if (review['evaluationType'] && Array.isArray(review['evaluationType'])) {
             reviewHTML += '<h4>Evaluation Types</h4>';
             reviewHTML += '<ul>';
             review['evaluationType'].forEach(evaluation => {
                 reviewHTML += '<li>' + evaluation + '</li>';
             });
             reviewHTML += '</ul>';
-        } else {
+        }
+        else if (review['evaluationType']){
+            reviewHTML += '<h4>Evaluation Types</h4>';
+            reviewHTML += '<p>' + review['evaluationType'] +'</p>';
+        } 
+        else {
             reviewHTML += '<h4>Evaluation Types</h4>';
             reviewHTML += '<p>No evaluations provided.</p>';
         }
