@@ -97,7 +97,17 @@ class Review {
                 },
                 {$match:{
                     __catalogCourseId: { $in: [codeClass] } // Filter for specific classes
-                }}
+                }},
+                {
+                    $addFields: {
+                        reviews: {
+                            $sortArray: {
+                                input: "$reviews",
+                                sortBy: { year: -1 } // Sort by the year field in ascending order
+                            }
+                        }
+                    }
+                }
             ]).toArray();
     
             return results; // Return the array of classes with their reviews

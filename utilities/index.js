@@ -102,7 +102,7 @@ Util.getReviews = async function(courseID) {
         // Avatar and Customer Info
         reviewHTML += '<div>';
         reviewHTML += '<h3 class="customer-name">Teacher: ' + review['teacher'] + '</h3>';
-        reviewHTML += '<p class="review-date">Term: ' + review['term'] + '</p>'; // Using term as review date
+        reviewHTML += '<p class="review-date">Term: ' + review['semester'] + ' ' + review['year'] + '</p>'; // Using term as review date
         reviewHTML += '</div>';
         
         reviewHTML += '</div>'; // Closing reviewStats
