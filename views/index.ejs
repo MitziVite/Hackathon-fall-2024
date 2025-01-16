@@ -2,9 +2,17 @@
     <div class="overlay"></div>
     <div class="background-image" id="backgroundImageId">
         <%- messages() %>
+
+        <% if (errors) { %>
+            <ul class="notice">
+           <% errors.array().forEach(error => { %>
+             <li><%= error.msg %></li>
+          <%  }) %>
+           </ul>
+          <% } %>
     </div>
     <div class="search-bar-container">
-        <input type="text" id="courseCode" placeholder="Type course code">
+        <input type="text" name="courseCode" id="courseCode" placeholder="Type course code">
         <button id="submitSearch">&#128269;</button>
     </div>
 </div>
