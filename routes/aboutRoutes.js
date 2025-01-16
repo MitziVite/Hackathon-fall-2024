@@ -6,10 +6,7 @@ const validator = require("../utilities/validation")
 
 
 // Route for Course Details
-router.get("/:ccid", 
-    validator.SearchRules(),
-    validator.checkSearchData,
-    utilities.handleErrors(baseController.buildDetails));
+router.get("/:ccid",utilities.handleErrors(baseController.buildDetails));
 
 
 module.exports = router;

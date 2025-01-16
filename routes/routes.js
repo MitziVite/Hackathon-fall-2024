@@ -5,6 +5,8 @@ const utilities = require("../utilities");
 const baseController = require('../controllers/baseController');
 const reviewController = require('../controllers/reviewController');
 const router = express.Router();
+const validator = require("../utilities/validation")
+
 
 
 // Static Routes
@@ -16,7 +18,10 @@ router.use("/images", express.static(__dirname + "public/images"));
 
 // Frontend Routes
 router.get("/", utilities.handleErrors(baseController.buildHome));
-router.use("/about", utilities.handleErrors(aboutRoutes));
+router.use("/about",
+    validator.SearchRules(),
+    validator.checkSearchData,
+    utilities.handleErrors(aboutRoutes));
 router.use("/forms", utilities.handleErrors(reviewRoutes));
 
 // Backend Routes
