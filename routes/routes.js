@@ -19,8 +19,8 @@ router.use("/images", express.static(__dirname + "public/images"));
 // Frontend Routes
 router.get("/", utilities.handleErrors(baseController.buildHome));
 router.use("/about",
-    validator.SearchRules(),
-    validator.checkSearchData,
+    // validator.SearchRules(),
+    // validator.checkSearchData,
     utilities.handleErrors(aboutRoutes));
 router.use("/forms", utilities.handleErrors(reviewRoutes));
 
