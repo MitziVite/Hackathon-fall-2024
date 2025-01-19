@@ -7,7 +7,6 @@ const validate = {}
  * ********************************* */
 
 validate.SearchRules = () =>{
-    console.log('you made it to the search rules')
     return [
         body("courseCode")
         .notEmpty()
@@ -24,7 +23,9 @@ validate.SearchRules = () =>{
  * ***************************** */
 validate.checkSearchData = async (req, res, next) => {
     console.log('we are now checking the data')
+    console.log(req.body)
     const { courseCode } = req.body
+
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
