@@ -108,18 +108,32 @@ changeBackgroundImage();
 
 
 var searchTerm = document.getElementById('courseCode')
-var searchButton = document.getElementById('submitSearch')
-searchButton.addEventListener('click', function(event) {
-    var ccid = searchTerm.value;
-    ccid = ccid.toUpperCase().replaceAll(' ', '');
-    window.location.href = '/about/' + ccid;
-})
+var searchForm = document.getElementById('searchForm')
 
-var input = document.getElementById('courseCode');
-input.addEventListener('keypress', function(event) {
-    if (event.key == 'Enter'){
-        var ccid = input.value;
-        ccid = ccid.toUpperCase().replaceAll(' ', '');
-        window.location.href = '/about/' + ccid;
-    }
-})
+// searchForm.addEventListener('submit', function(event) {
+//     console.log('submited successfully')
+//     const courseCode = searchTerm.value;
+    
+//     // Dynamically change the form action to include the course code
+//     if (courseCode) {
+//         this.action = `/about/${courseCode}`;
+//     }
+// });
+// var searchButton = document.getElementById('submitSearch')
+// searchButton.addEventListener('click', function(event) {
+//     var ccid = searchTerm.value;
+//     console.log(ccid)
+//     ccid = ccid.toUpperCase().replaceAll(' ', '');
+//     window.location.href = '/about/' + ccid;
+// })
+
+// var input = document.getElementById('courseCode');
+// input.addEventListener('keypress', function(event) {
+//     if (event.key == 'Enter'){
+//         var ccid = input.value;
+//         console.log(ccid)
+
+//         ccid = ccid.toUpperCase().replaceAll(' ', '');
+//         window.location.href = '/about/' + ccid;
+//     }
+// })

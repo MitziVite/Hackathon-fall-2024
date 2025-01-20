@@ -6,7 +6,8 @@ const Util = require("../utilities/index")
 baseController.buildHome = async function(req, res, next) {
     try {
       req.flash('message', 'Welcome to our website')
-      let errors = null
+      const errors = req.session.errors || null;
+      req.session.errors = null; 
       res.render("index", { title: "Search for Courses", errors});
     } catch (error) {
       console.error("Error:", error);
@@ -18,7 +19,7 @@ baseController.buildHome = async function(req, res, next) {
 baseController.buildDetails = async function(req, res, next) {
   try{
     const review = new Review();
-    const ccid = req.params.ccid.toUpperCase();
+    const ccid = req.query.courseCode.toUpperCase()
     
     var ans = await review.getClassesWithReviews(ccid);
     const clos = ans[0]['outcomes']

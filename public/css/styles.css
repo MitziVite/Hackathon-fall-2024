@@ -151,6 +151,10 @@ body {
   font-family: Arial, sans-serif;
 }
 
+#searchForm{
+  all: revert;
+}
+
 /* 1.6 Footer */
 .footer {
   background-color: #2B4D6A;
@@ -208,6 +212,10 @@ body {
   margin-bottom: 15px;
   padding: 15px;
 } 
+
+.message, .warning, .error-message,  .notice li{
+  list-style: none;
+}
 
 :disabled {
   background: #a00;
@@ -668,10 +676,10 @@ ul {
   padding-left: 20px;
 }
 
-ul li {
+/* ul li {
   font-size: 0.9em;
   color: #555;
-}
+} */
 
 @media (max-width: 600px) {
   .mainReview {

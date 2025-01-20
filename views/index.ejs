@@ -3,18 +3,18 @@
     <div class="background-image" id="backgroundImageId">
         <%- messages() %>
 
-        <% if (errors) { %>
+        <% if (errors) { console.log(errors)%>
             <ul class="notice">
-           <% errors.array().forEach(error => { %>
-             <li><%= error.msg %></li>
+           <% errors.forEach(error => { %>
+             <li><%= error %></li>
           <%  }) %>
            </ul>
           <% } %>
     </div>
     <div class="search-bar-container">
-        <!-- <form id="searchForm" action="/about/" method="GET"> -->
+        <form id="searchForm" action="/about/course" method="GET">
             <input type="text" name="courseCode" id="courseCode" placeholder="Type course code">
             <button id="submitSearch">&#128269;</button>
-        <!-- </form> -->
+        </form>
     </div>
 </div>

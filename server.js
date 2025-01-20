@@ -11,7 +11,6 @@ const session = require("express-session")
 const MongoStore = require('connect-mongo');
 const { connectDB } = require('./database.js')
 const { MongoClient } = require('mongodb');
-const uri = process.env.MONGOKEY;
 
 
 connectDB()

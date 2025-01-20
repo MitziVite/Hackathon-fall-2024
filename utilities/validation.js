@@ -1,4 +1,4 @@
-const { body, validationResult } = require("express-validator")
+const { query, validationResult } = require("express-validator")
 const validate = {}
 
 
@@ -8,8 +8,10 @@ const validate = {}
 
 validate.SearchRules = () =>{
     return [
-        body("courseCode")
+        query("courseCode")
         .notEmpty()
+        .withMessage("Type a course code before searching")
+        .bail()
         .trim()
         .escape()
         .isLength({min:5})
@@ -22,14 +24,12 @@ validate.SearchRules = () =>{
  * Check data and return errors or continue to details page
  * ***************************** */
 validate.checkSearchData = async (req, res, next) => {
-    console.log('we are now checking the data')
-    console.log(req.body)
-    const { courseCode } = req.body
-
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
-      res.render("index", { title: "Search for Courses", errors})
+        req.session.errors = errors.array().map((err) => err.msg);
+        res.redirect("/");
+    //   res.redirect("/", { title: "Search for Courses", errors})
       return
     }
     next()

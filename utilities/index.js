@@ -88,7 +88,7 @@ Util.getReviews = async function(courseID) {
     var result = await fetch(`https://rexysvoice.us/getCourseDetails?courseID=${courseID}`);
     result = await result.json();
     let reviews = result[0]['reviews'];
-    console.log(reviews);
+    // console.log(reviews);
     let reviewsHTML = '';
 
     reviews.forEach((review) => {
