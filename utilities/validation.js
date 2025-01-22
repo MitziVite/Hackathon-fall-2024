@@ -106,11 +106,8 @@ validate.reviewFormRules = ()=> {
  * ***************************** */
 validate.checkFormData = async (req, res, next) => {
     let errors = []
-    console.log('you are now validating the form')
     errors = validationResult(req)
     if (!errors.isEmpty()) {
-        console.log('oh oh, errors found')
-        console.log(errors)
         req.session.errors = errors.array().map((err) => err.msg);
         res.redirect("/forms/rateClassForm");
       return
