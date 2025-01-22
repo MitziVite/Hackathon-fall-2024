@@ -3,7 +3,7 @@
     <div class="background-image" id="backgroundImageId">
         <%- messages() %>
 
-        <% if (errors) { console.log(errors)%>
+        <% if (errors) {%>
             <ul class="notice">
            <% errors.forEach(error => { %>
              <li><%= error %></li>

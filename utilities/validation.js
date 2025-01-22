@@ -10,13 +10,13 @@ validate.SearchRules = () =>{
     return [
         query("courseCode")
         .notEmpty()
-        .withMessage("Type a course code before searching")
+        .withMessage("Type a course code before searching.")
         .bail()
         .isString()
         .trim()
         .escape()
         .isLength({min:5})
-        .withMessage("Check if your course code is correct before searching")
+        .withMessage("Check if your course code is correct before searching.")
 
     ]
 }
@@ -45,7 +45,7 @@ validate.reviewFormRules = ()=> {
     return[
         body('codeClass')
         .notEmpty()
-        .withMessage('Please include a course code')
+        .withMessage('Please include a course code.')
         .bail()
         .trim()
         .escape()
@@ -53,44 +53,49 @@ validate.reviewFormRules = ()=> {
 
         body('semester')
         .notEmpty()
-        .withMessage('Please indicate the semester you took the class'),
+        .withMessage('Please indicate the semester you took the class.'),
 
         body('year')
+        .notEmpty()
+        .withMessage('Please indicate the year you took the classs.')
+        .bail()
         .isLength({ min: 4, max: 4 })
+        .withMessage('Please enter a valid format.')
+        .bail()
         .isInt({ min:2015, max:2025})
-        .withMessage('You can only review a course within the last decade')
+        .withMessage('You can only review a course within the last decade.')
         .escape(),
 
         body('grades')
         .notEmpty()
-        .withMessage('Please select a valid grade letter'),
+        .withMessage('Please select a valid grade letter.'),
 
         body('difficulty')
         .notEmpty()
-        .withMessage('Please indicate level of difficulty'),
+        .withMessage('Please indicate level of difficulty.'),
 
         body('hoursPerWeek')
         .notEmpty()
-        .withMessage('Please indicate aprox hours per week spent for the class'),
+        .withMessage('Please indicate aprox hours per week spent for the class.'),
 
         body('overallSatisfaction')
         .notEmpty()
-        .withMessage('Please indicate your overall satisfaction'),
+        .withMessage('Please indicate your overall satisfaction.'),
         
         body('classType')
         .notEmpty()
-        .withMessage('Please indicate your class type'),
+        .withMessage('Please indicate your class type.'),
 
         body('teacher')
         .isString()
         .escape()
-        .withMessage("Please type a teacher's name"),
+        .withMessage("Please type a teacher's name."),
         
         body('comments')
         .notEmpty()
         .isString()
         .escape()
-        .withMessage("Add your review comments for the class")
+        .withMessage("Add your review comments for the class.")
 
 
     ]
@@ -101,11 +106,13 @@ validate.reviewFormRules = ()=> {
  * ***************************** */
 validate.checkFormData = async (req, res, next) => {
     let errors = []
+    console.log('you are now validating the form')
     errors = validationResult(req)
     if (!errors.isEmpty()) {
+        console.log('oh oh, errors found')
+        console.log(errors)
         req.session.errors = errors.array().map((err) => err.msg);
         res.redirect("/forms/rateClassForm");
-    //   res.redirect("/", { title: "Search for Courses", errors})
       return
     }
     next()

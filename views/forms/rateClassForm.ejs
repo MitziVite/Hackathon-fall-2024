@@ -1,4 +1,13 @@
 <%- messages() %>
+<% if (errors) { console.log(errors)%>
+    <div>
+        <ul class="notice">
+        <% errors.forEach(error => { %>
+            <li><%= error %></li>
+        <%  }) %>
+        </ul>
+    </div>
+  <% } %>
 
 <div class="container-form" >
     <form action="/forms/submit" method="POST">
