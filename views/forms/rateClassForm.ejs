@@ -1,10 +1,10 @@
 <%- messages() %>
 
 <div class="container-form" >
-    <form action="/submit" method="POST">
+    <form action="/forms/submit" method="POST">
         <h2>Tell us about your experiance</h2>
         <label for="codeClass">Class Code</label>
-        <input type="text" id="classInput" name="codeClass" rows="1" placeholder="Example: BIO 180" class="styled-textarea"></input>
+        <input type="text" id="classInput" name="codeClass" rows="1" placeholder="Example: BIO 180" class="styled-textarea" required></input>
         <label for="semester">Semester taken</label>
         <div class="select-wrapper">
             <select id="semester" name="semester" class="styled-select">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <label for="year">Year taken</label>
-        <input type="text" id="year" name="year" rows="1" placeholder="2024" class="styled-textarea"></input>
+        <input type="text" id="year" name="year" rows="1" min= "2015" max= "2025" placeholder="2024" class="styled-textarea" required></input>
         
 
         <label for="grades">Grades</label>

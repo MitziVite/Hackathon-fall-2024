@@ -21,7 +21,6 @@ router.use("/about", utilities.handleErrors(aboutRoutes));
 router.use("/forms", utilities.handleErrors(reviewRoutes));
 
 // Backend Routes
-router.post("/submit", reviewController.createReview);
 router.post("/createReview", reviewController.createReview);
 router.get("/getCourseReview", reviewController.getReview);
 router.get("/getCourseDetails", reviewController.getCourseDetails);

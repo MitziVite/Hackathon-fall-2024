@@ -507,6 +507,17 @@ form {
     background-color: #3e8e41; /* Color cuando el botón es presionado */
     transform: translateY(0);
 }
+
+input:required:focus:invalid{
+  background-color: #fc7065;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+input:required:focus:valid {
+  background-color: aquamarine;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
 /*************************
 3. About Page
 *************************/
@@ -574,7 +585,7 @@ form {
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 5px 10px;
+  padding: 10px 20px;
   margin: 0.5em;
 }
 
