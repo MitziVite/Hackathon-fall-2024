@@ -39,9 +39,9 @@ baseController.buildDetails = async function(req, res, next) {
 
     });
   } catch (error) {
-    req.flash('warning', "We currently don't have the class you are looking for")
-    console.error("Error:", error);
-    next(new Error("Error Rendering"));
+    req.flash('warning', "Course not found")
+    res.status = 404;
+    next(new Error("We currently don't have the class you are looking for"));
   }
 
 }
