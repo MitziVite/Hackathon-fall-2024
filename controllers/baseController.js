@@ -19,7 +19,7 @@ baseController.buildHome = async function(req, res, next) {
 baseController.buildDetails = async function(req, res, next) {
   try{
     const review = new Review();
-    const ccid = req.query.courseCode.toUpperCase()
+    const ccid = req.query.courseCode.toUpperCase().replace(" ", "")
     
     var ans = await review.getClassesWithReviews(ccid);
     const clos = ans[0]['outcomes']
@@ -39,6 +39,7 @@ baseController.buildDetails = async function(req, res, next) {
 
     });
   } catch (error) {
+    console.log(error)
     req.flash('warning', "Course not found")
     res.status = 404;
     next(new Error("We currently don't have the class you are looking for"));
