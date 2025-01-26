@@ -25,7 +25,7 @@ baseController.buildDetails = async function(req, res, next) {
     const clos = ans[0]['outcomes']
  
     var closHTML = Util.createOutcomes(clos)
-    var reviews = await Util.getReviews(ccid)
+    var reviews = await Util.getReviews(ans[0]['reviews'])
     res.render("about", { 
       title: ans[0]['title'],
       ccid,
