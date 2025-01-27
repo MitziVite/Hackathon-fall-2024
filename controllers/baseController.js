@@ -58,5 +58,8 @@ baseController.buildForm = async function(req, res, next) {
   
 }
 
+baseController.searchResults = async function(req, res, next){
+  res.render("search/searchResults", {title: "Search results"})
+}
 
 module.exports = baseController;
