@@ -37,52 +37,8 @@ result = {
     onlinevsperson: 'In-Person',
     term: 'Fall 2023',
     teacher: 'Ms. Lee'
-  }
+}
 
-// Util.getReviews = async function(courseID){
-
-//     var result = await fetch(`https://rexysvoice.us/getCourseDetails?courseID=${courseID}`)
-//     result = await result.json()
-//     let reviews = result[0]['reviews']
-//     console.log(reviews)
-//     var reviewsHTML = '<ul>'
-
-//     reviews.forEach((review) =>{
-//         var reviewHTML = '<li>'
-//         reviewHTML += '<div id = reviewCard>'
-//         reviewHTML += '<div class = reviewStats>'
-//         reviewHTML += '<h3>Difficulty:</h3> <p> '+ review['difficulty'] + '</p>'
-//         reviewHTML += '<h3>Satisfaction:</h3> <p> ' + review['overallSatisfaction'] + '</p>'
-//         reviewHTML += '<h3>Hours per week:</h3> <p> ' + review['hoursPerWeek'] + '</p>'
-//         reviewHTML += '</div>'
-//         reviewHTML += '<hr>'
-//         reviewHTML += '<div class = mainReview >'
-//         reviewHTML += '<div class = briefReview >'
-//         reviewHTML += '<h3>Grade:</h3> <p> ' + review['grades'] + '</p>'
-//         reviewHTML += '<h3>Teacher:</h3> <p> ' + review['teacher'] + '</p>'
-//         reviewHTML += '<h3>Semester:</h3> <p> ' + review['term'] + '</p>'
-//         if (review['evaluationType'] != null) {
-            
-//             reviewHTML += '<h3>Evaluation Types:</h3>'
-//             // reviewHTML += review['evaluationType']
-//             reviewHTML += '<ul>'
-//             review['evaluationType'].forEach((evaluation)=>{ 
-//                 reviewHTML += '<li>' + evaluation + '</li>'
-//             })
-//         }
-//         reviewHTML += '</ul>'
-//         reviewHTML += '</div>'
-//         reviewHTML += '<div class= comments>'
-//         reviewHTML += (review['comment'] == null) ? '': '<h3>Comments:</h3> <p> ' + review['comment'] +' </p>'
-//         reviewHTML += '</div>'
-//         reviewHTML += '</li>'
-//         reviewHTML += '</div>'
-//         reviewsHTML += reviewHTML
-//     })
-//     reviewsHTML += '</ul>'
-
-//     return reviewsHTML
-// };
 
 Util.getReviews = async function(reviews) {
 
