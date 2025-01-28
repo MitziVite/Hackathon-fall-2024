@@ -122,23 +122,19 @@ class Review {
             const collection = db.collection('classes'); // The Classes collection
             const results = await collection.aggregate([
                 {
-                    $lookup: {
-                        from: 'classes',           // The collection to join
-                        localField: '__catalogCourseId',        // The field from the Classes collection
-                        as: 'classOptions'             // The name of the new array field for the classOptions
+                    $match: {
+                        __catalogCourseId: { $regex: `^${code}` } // Case-insensitive search for 'starts with'
                     }
-                },
-                {$match:{
-                    __catalogCourseId: { $in: [code] } // Filter for specific classes
-                }}
+                }
             ]).toArray();
-    
-            return results; // Return the array of classes with their reviews
+        
+            return results; // Return the array of classes
         } catch (error) {
-            console.error('Error retrieving classes with reviews:', error);
+            console.error('Error retrieving classes:', error);
             return null; // Handle the error as needed
         }
     }
+    
 
 }
 
