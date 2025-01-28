@@ -14,9 +14,12 @@
   2.1 
 3. About Page
   3.1 Title
-4. Error Page
 
-5. Media Query
+4. Search page
+
+5. Error Page
+
+6. Media Query
 
 
 
@@ -712,7 +715,16 @@ ul {
 
 
 /*************************
-4. Error Page
+4. Search Page
+*************************/
+
+
+
+
+
+
+/*************************
+5. Error Page
 *************************/
 #error{
   display: flex;
@@ -723,7 +735,7 @@ ul {
 
 
 /*************************
-5. Media Query
+6. Media Query
 *************************/
 
 @media (max-width: 768px) {
