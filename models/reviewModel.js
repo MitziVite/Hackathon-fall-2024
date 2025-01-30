@@ -126,7 +126,7 @@ class Review {
                         __catalogCourseId: { $regex: `^${code}` } // Case-insensitive search for 'starts with'
                     }
                 }
-            ]).toArray();
+            ]).toArray()
         
             return results; // Return the array of classes
         } catch (error) {
