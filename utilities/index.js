@@ -40,7 +40,7 @@ result = {
 }
 
 
-Util.getReviews = async function(reviews) {
+Util.getReviews =  function(reviews) {
 
     let reviewsHTML = '';
 
@@ -129,6 +129,28 @@ Util.getReviews = async function(reviews) {
 
     return reviewsHTML;
 };
+
+Util.createSimilarCourses = async function(courseList){
+
+    let coursesHTML = '';
+    coursesHTML += '<ul>'
+
+    courseList.forEach((course) => {
+        // Review card structure
+        let courseHTML = '<div id="reviewCard">';
+        courseHTML += '<li>'
+        courseHTML += '<h2>' + course.courseName +'</h2>'
+        courseHTML += '<p>' + course.courseCode +'</p>'
+        courseHTML += '</div>'; // Closing review-card
+        courseHTML += '</li>'
+        coursesHTML += courseHTML;
+    });
+
+    coursesHTML += '</ul>'
+
+    return coursesHTML;
+
+}
 
 
 module.exports = Util;

@@ -1,19 +1,15 @@
 <div id="resultsContainer">
-    <div class="search-bar-container results">
+    <!-- <div class="search-bar-container results">
         <form id="searchForm" action="/about/course" method="GET">
             <input type="text" name="courseCode" id="courseCode" placeholder="Type course code">
             <button id="submitSearch">&#128269;</button>
         </form>
-    </div>
+    </div> -->
     <div class="searchResults">
-        <ul>
-            <li>ART</li>
-            <li>CSE</li>
-            <li>MATH</li>
-            <li>BIO</li>
-            <li>PSYCH</li>
-            <li>REL</li>
-            <li>BUS</li>
-        </ul>
+        <%if (courses) {%>
+            <%-courses%>
+        <%}else {%>
+            <p>No courses yet</p> 
+        <%}%>
     </div>
 </div>
