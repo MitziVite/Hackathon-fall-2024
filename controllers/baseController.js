@@ -59,6 +59,11 @@ baseController.buildForm = async function(req, res, next) {
 }
 
 baseController.searchResults = async function(req, res, next){
+  const review = new Review(); 
+  let similarClasses = await review.getSimilarClasses('CSE')
+
+  const cleanedArray = similarClasses.map((course) => {return {'courseCode': course['__catalogCourseId'], 'courseName': course['title']}})
+  console.log(cleanedArray)
   res.render("search/searchResults", {title: "Search results"})
 }
 
