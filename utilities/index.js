@@ -1,4 +1,5 @@
 const revModel = require("../models/reviewModel");
+const reviewController = require('../controllers/reviewController');
 const Util = {};
 
 // Genera el formulario HTML dinámicamente
@@ -131,26 +132,33 @@ Util.getReviews =  function(reviews) {
 };
 
 Util.createSimilarCourses = async function(courseList){
+    let coursesHTML = '<ul>';
 
-    let coursesHTML = '';
-    coursesHTML += '<ul>'
-
-    courseList.forEach((course) => {
+    // Use map to create an array of promises and await them
+    const coursePromises = courseList.map(async (course) => {
+        let response = await reviewController.getReviewInternal(course.courseCode);        
         // Review card structure
-        let courseHTML = '<div id="reviewCard">';
-        courseHTML += '<li>'
-        courseHTML += '<h2>' + course.courseName +'</h2>'
-        courseHTML += '<p>' + course.courseCode +'</p>'
-        courseHTML += '</div>'; // Closing review-card
-        courseHTML += '</li>'
-        coursesHTML += courseHTML;
+        let courseHTML = '<div id="courseCard">';
+        courseHTML += '<li>';
+        courseHTML += '<div style="display:flex; justify-content:space-evenly;">';
+        courseHTML += '<h2>' + course.courseName + '</h2>';
+        courseHTML += ` <h4> Satisfaction Rate:  ${response['averageOverallSatisfaction']}</h4>`;
+        courseHTML += ` <h4> Difficulty Rate:  ${response['averageDifficulty']} </h4>`;
+        courseHTML += '</div>';
+        courseHTML += '<p>' + course.courseCode + '</p>';
+        courseHTML += '</div>';
+        courseHTML += '</li>';
+        
+        return courseHTML; // Return the HTML for each course
     });
 
-    coursesHTML += '</ul>'
+    // Wait for all promises to resolve and concatenate them into coursesHTML
+    const courseHTMLs = await Promise.all(coursePromises);
+    coursesHTML += courseHTMLs.join(''); // Join the HTML parts together
+    coursesHTML += '</ul>';
 
     return coursesHTML;
-
-}
+};
 
 
 module.exports = Util;

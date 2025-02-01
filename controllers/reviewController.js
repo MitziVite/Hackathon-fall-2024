@@ -36,6 +36,13 @@ const getReview = async function (req, res, next) {
     res.json(ans);
 };
 
+const getReviewInternal = async function (codeClass) {
+    let review = new Review();
+    let response = await review.getAverages(codeClass);
+    return response;
+};
+
+
 const getCourseDetails = async function (req, res, next) {
     let review = new Review();
     const codeClass = req.query.courseID.toUpperCase();
@@ -43,4 +50,4 @@ const getCourseDetails = async function (req, res, next) {
     res.json(ans);
 };
 
-module.exports = { createReview, getReview, getCourseDetails};
+module.exports = { createReview, getReview, getCourseDetails, getReviewInternal};
