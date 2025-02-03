@@ -136,14 +136,31 @@ Util.createSimilarCourses = async function(courseList){
 
     // Use map to create an array of promises and await them
     const coursePromises = courseList.map(async (course) => {
-        let response = await reviewController.getReviewInternal(course.courseCode);        
+        let response = await reviewController.getReviewInternal(course.courseCode)
+        difficulty = response['averageDifficulty']
+        if (difficulty <= 2) {
+            difficulty_color = 'green';
+        } else if (difficulty > 2 && difficulty < 4) {
+            difficulty_color = 'orange';
+        } else {
+            difficulty_color = 'red'; // This handles 4 and 5
+        }
+    
+        satisfaction = response['averageOverallSatisfaction'] 
+        if (satisfaction <= 2) {
+            satisfaction_color = 'red';
+        } else if (satisfaction >= 3 && satisfaction < 4) {
+            satisfaction_color = 'orange';
+        } else {
+            satisfaction_color = 'green'; // This handles 4 and 5
+        }         
         // Review card structure
         let courseHTML = '<div id="courseCard">';
         courseHTML += '<li>';
         courseHTML += '<div style="display:flex; justify-content:space-evenly;">';
         courseHTML += '<h2>' + course.courseName + '</h2>';
-        courseHTML += ` <h4> Satisfaction Rate:  ${response['averageOverallSatisfaction']}</h4>`;
-        courseHTML += ` <h4> Difficulty Rate:  ${response['averageDifficulty']} </h4>`;
+        courseHTML += ` <h4 style="color:${satisfaction_color}"> Satisfaction Rate:  ${satisfaction.toFixed(2)}</h4>`;
+        courseHTML += ` <h4 style="color:${difficulty_color}"> Difficulty Rate:  ${difficulty.toFixed(2)} </h4>`;
         courseHTML += '</div>';
         courseHTML += '<p>' + course.courseCode + '</p>';
         courseHTML += '</div>';
