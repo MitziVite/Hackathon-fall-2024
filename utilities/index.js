@@ -162,7 +162,7 @@ Util.createSimilarCourses = async function(courseList){
         courseHTML += ` <h4 style="color:${satisfaction_color}"> Satisfaction Rate:  ${satisfaction.toFixed(2)}</h4>`;
         courseHTML += ` <h4 style="color:${difficulty_color}"> Difficulty Rate:  ${difficulty.toFixed(2)} </h4>`;
         courseHTML += '</div>';
-        courseHTML += '<p>' + course.courseCode + '</p>';
+        courseHTML += '<p class="courseCode">' + course.courseCode + '</p>';
         courseHTML += '</div>';
         courseHTML += '</li>';
         

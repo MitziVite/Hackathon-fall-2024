@@ -1,3 +1,5 @@
+import { buildDetails } from '../../controllers/baseController';
+
 
 function toggleMenu() {
     const navbar = document.getElementById('navbar');
@@ -112,8 +114,28 @@ var searchForm = document.getElementById('searchForm')
 
 
 
-// if ((window.location.href).contains('search')){
-//     let classCards = document.querySelectorAll('.reviewCard')
+if ((window.location.href).includes('search')){
+    let classCards = document.querySelectorAll('#courseCard')
+    classCards.forEach((card)=>{
+
+        card.addEventListener('click',()=>{
+            const courseCode = card.querySelector(".courseCode").innerText;
+            const newRoute = '/course';
+            const queryParams = { courseCode: 'courseCode' };
+
+            // Convert queryParams object to query string
+            const queryString = new URLSearchParams(queryParams).toString();
+
+            // Combine the new route and query string
+            const newUrl = `${newRoute}?${queryString}`;
+
+            // Update the URL without reloading the page
+            window.history.pushState({}, '', newUrl);
+
+            buildDetails()
+        })
+
+    })
 
 
-// }
+}
