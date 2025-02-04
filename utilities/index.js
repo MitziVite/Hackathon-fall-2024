@@ -156,15 +156,17 @@ Util.createSimilarCourses = async function(courseList){
         }         
         // Review card structure
         let courseHTML = '<div id="courseCard">';
+        courseHTML += `<a href='/about/course?courseCode=${course.courseCode}'>`
         courseHTML += '<li>';
         courseHTML += '<div style="display:flex; justify-content:space-evenly;">';
-        courseHTML += '<h2>' + course.courseName + '</h2>';
+        courseHTML += `<h2>${course.courseName}</h2>`;
         courseHTML += ` <h4 style="color:${satisfaction_color}"> Satisfaction Rate:  ${satisfaction.toFixed(2)}</h4>`;
         courseHTML += ` <h4 style="color:${difficulty_color}"> Difficulty Rate:  ${difficulty.toFixed(2)} </h4>`;
         courseHTML += '</div>';
         courseHTML += '<p class="courseCode">' + course.courseCode + '</p>';
         courseHTML += '</div>';
         courseHTML += '</li>';
+        courseHTML += '<a/>';
         
         return courseHTML; // Return the HTML for each course
     });
