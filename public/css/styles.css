@@ -667,8 +667,8 @@ hr {
   margin-top: 15px;
 }
 
-.product-details,
-.customer-comment {
+.reviewDetails,
+.studentComments {
   flex: 1; /* Ensure both sections take up equal space */
   min-width: 300px; /* Prevents sections from becoming too narrow */
 }
@@ -705,8 +705,8 @@ ul {
     flex-direction: column; /* Stacks the product details and comments vertically on small screens */
   }
 
-  .product-details,
-  .customer-comment {
+  .reviewDetails,
+  .studentComments {
     min-width: unset; /* Remove min-width for stacking */
   }
 }

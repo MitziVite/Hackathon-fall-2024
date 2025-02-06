@@ -84,7 +84,7 @@ Util.getReviews =  function(reviews) {
         reviewHTML += '<div class="review-content">';
         
         // Product Details (Difficulty, Hours per Week, etc.)
-        reviewHTML += '<div class="product-details">';
+        reviewHTML += '<div class="reviewDetails">';
         
         // Adding Grade, Difficulty, Evaluation Types, Hours per Week
         reviewHTML += '<h4>Grade</h4>';
@@ -114,11 +114,11 @@ Util.getReviews =  function(reviews) {
             reviewHTML += '<p>No evaluations provided.</p>';
         }
 
-        reviewHTML += '</div>'; // Closing product-details
+        reviewHTML += '</div>'; // Closing reviewDetails
         
         // Customer Comment
-        reviewHTML += '<div class="customer-comment">';
-        reviewHTML += '<h4>Customer Comment</h4>';
+        reviewHTML += '<div class="studentComments">';
+        reviewHTML += '<h4>Student Comments</h4>';
         reviewHTML += '<p>' + (review['comment'] ? review['comment'] : 'No comments provided.') + '</p>';
         reviewHTML += '</div>';
         
