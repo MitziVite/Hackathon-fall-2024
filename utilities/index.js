@@ -26,20 +26,6 @@ Util.createOutcomes = function(outcomesList){
     return outcomeHTML;
 }
 
-result = {
-    _id: '6713e1b628578f7973e52b43',
-    codeClass: 'ENG301',
-    grades: 'B',
-    difficulty: 4,
-    hoursPerWeek: 19,
-    finalProject: 1,
-    finalTest: 1,
-    overallSatisfaction: 2,
-    onlinevsperson: 'In-Person',
-    term: 'Fall 2023',
-    teacher: 'Ms. Lee'
-}
-
 
 Util.getReviews =  function(reviews) {
 
