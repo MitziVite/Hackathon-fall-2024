@@ -117,13 +117,31 @@ class Review {
         }
     }
     
-    async getSimilarClasses(code) {
+    async getSimilarClassesByCode(code) {
         try {
             const collection = db.collection('classes'); // The Classes collection
             const results = await collection.aggregate([
                 {
                     $match: {
                         __catalogCourseId: { $regex: `^${code}` } // Case-insensitive search for 'starts with'
+                    }
+                }
+            ]).toArray()
+        
+            return results; // Return the array of classes
+        } catch (error) {
+            console.error('Error retrieving classes:', error);
+            return null; // Handle the error as needed
+        }
+    }
+
+    async getSimilarClassesByName(name) {
+        try {
+            const collection = db.collection('classes'); // The Classes collection
+            const results = await collection.aggregate([
+                {
+                    $match: {
+                        title: { $regex: `^${name}` } // Case-insensitive search for 'starts with'
                     }
                 }
             ]).toArray()

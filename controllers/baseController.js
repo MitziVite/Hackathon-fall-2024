@@ -61,7 +61,7 @@ baseController.buildForm = async function(req, res, next) {
 baseController.searchResults = async function(req, res, next){
   const ccid = req.query.courseCode.toUpperCase().replace(" ", "")
   const review = new Review(); 
-  let similarClasses = await review.getSimilarClasses(ccid)
+  let similarClasses = await review.getSimilarClassesByCode(ccid)
 
   const cleanedArray = similarClasses.map((course) => {return {'courseCode': course['__catalogCourseId'], 'courseName': course['title']}})
   const coursesComponent = await Util.createSimilarCourses(cleanedArray)
