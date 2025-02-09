@@ -137,11 +137,19 @@ class Review {
 
     async getSimilarClassesByName(name) {
         try {
+
+            // Convert input into an array of words
+            const words = name.trim().split(/\s+/); // Split by spaces
+
+            // Build regex patterns to match all words (in any order)
+            const regexPatterns = words.map(word => `(?=.*${word})`).join("");
+
+            const regex = new RegExp(regexPatterns, "i"); // Case-insensitive regex
             const collection = db.collection('classes'); // The Classes collection
             const results = await collection.aggregate([
                 {
                     $match: {
-                        title: { $regex: `^${name}` } // Case-insensitive search for 'starts with'
+                        title: { $regex: regex } // Case-insensitive search for 'starts with'
                     }
                 }
             ]).toArray()
