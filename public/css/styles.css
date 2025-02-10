@@ -717,8 +717,12 @@ ul {
 /*************************
 4. Search Page
 *************************/
-
-
+#resultsContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 #courseCard {
   list-style: none;
@@ -729,17 +733,24 @@ ul {
   margin: 0.5em;  
 }
 
-#courseCard a{
+#courseCard a {
   text-decoration: none;
   color: black;
 }
 
-.courseCardDetails{
-  display:flex; 
-  justify-content:space-evenly;
-  felx-direction: row;
+.courseCardDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 50px;
+  align-items: center; 
 }
 
+.courseCardDetails h2{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
 /*************************
 5. Error Page
 *************************/
@@ -947,6 +958,14 @@ label {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     z-index: 1;
+}
+.top{
+  position: sticky; /* Makes the search bar stick to the top of the screen when scrolling */
+  top: 0; /* Keep it at the top */
+  left: 50%;
+  transform: translateX(-50%); /* Center it horizontally */
+  max-width: 800px; /* Set a max width to ensure the search bar doesn’t stretch too wide */
+  margin: 0 auto; /* Centers the search bar */
 }
 
 .search-bar-container input {

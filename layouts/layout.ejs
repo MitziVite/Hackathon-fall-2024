@@ -4,7 +4,7 @@
     <%- include('../partials/head') %>
 </head>
 <body>
-        <%- include('../partials/header') %>
+    <%- include(isHomePage ? '../partials/header' : '../partials/headerWithSearch') %>
     
     <main>
         <%- body %>

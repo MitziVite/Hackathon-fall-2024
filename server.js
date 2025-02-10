@@ -76,6 +76,7 @@ connectDB()
       message = 'Oh no! There was a crash. Maybe try a different route?'
     }
     res.render("errors/error", {
+      isHomePage: null,
       title: `Error ${res.status}` || 'Server Error',
       message
       })

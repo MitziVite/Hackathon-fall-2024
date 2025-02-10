@@ -5,10 +5,10 @@ const Util = require("../utilities/index")
 
 baseController.buildHome = async function(req, res, next) {
     try {
-      req.flash('message', 'Welcome to our website')
+      // req.flash('message', 'Welcome to our website')
       const errors = req.session.errors || null;
       req.session.errors = null; 
-      res.render("index", { title: "Search for Courses", errors});
+      res.render("index", { title: "Search for Courses", errors, isHomePage: req.path === '/'});
     } catch (error) {
       console.error("Error:", error);
       next(new Error("Error Rendering"));
@@ -27,6 +27,7 @@ baseController.buildDetails = async function(req, res, next) {
     var closHTML = Util.createOutcomes(clos)
     var reviews = await Util.getReviews(ans[0]['reviews'])
     res.render("about", { 
+      isHomePage: null,
       title: ans[0]['title'],
       ccid,
       description: ans[0]['description'],
@@ -50,7 +51,7 @@ baseController.buildDetails = async function(req, res, next) {
 baseController.buildForm = async function(req, res, next) {
     try{
       let errors = req.session.errors || null;
-      res.render("forms/rateClassForm", { title: "Rate your class", errors});
+      res.render("forms/rateClassForm", { isHomePage: null, title: "Rate your class", errors});
     } catch (error) {
       console.error("Error:", error);
       next(new Error("Error Rendering"));
@@ -66,7 +67,7 @@ baseController.searchResults = async function(req, res, next){
 
     const cleanedArray = similarClasses.map((course) => {return {'courseCode': course['__catalogCourseId'], 'courseName': course['title']}})
     const coursesComponent = await Util.createSimilarCourses(cleanedArray)
-    res.render("search/searchResults", {title: "Search results", courses: coursesComponent})
+    res.render("search/searchResults", {title: "Search results", courses: coursesComponent, isHomePage: null})
   }
   catch (error) {
   console.log(error)
