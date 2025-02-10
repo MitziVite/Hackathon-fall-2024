@@ -23,8 +23,7 @@ baseController.buildDetails = async function(req, res, next) {
     
     var ans = await review.getClassesWithReviews(ccid);
     const clos = ans[0]['outcomes']
- 
-    var closHTML = Util.createOutcomes(clos)
+    var closHTML = (clos)? Util.createOutcomes(clos) : ""
     var reviews = await Util.getReviews(ans[0]['reviews'])
     res.render("about", { 
       isHomePage: null,
