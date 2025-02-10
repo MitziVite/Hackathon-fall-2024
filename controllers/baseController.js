@@ -59,7 +59,7 @@ baseController.buildForm = async function(req, res, next) {
 }
 
 baseController.searchResults = async function(req, res, next){
-  const ccid = req.query.courseCode.toUpperCase().replace(" ", "")
+  const ccid = req.query.courseCode.toUpperCase()
   const review = new Review(); 
   let similarClasses = await review.getSimilarClassesByName(ccid)
 
