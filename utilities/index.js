@@ -144,15 +144,15 @@ Util.createSimilarCourses = async function(courseList){
         let courseHTML = '<div id="courseCard">';
         courseHTML += `<a href='/about/course?courseCode=${course.courseCode}'>`
         courseHTML += '<li>';
-        courseHTML += '<div style="display:flex; justify-content:space-evenly;">';
+        courseHTML += '<div class="courseCardDetails">';
+        courseHTML += `<h2 class="courseCode">${course.courseCode}</h2>`;
         courseHTML += `<h2>${course.courseName}</h2>`;
-        courseHTML += ` <h4 style="color:${satisfaction_color}"> Satisfaction Rate:  ${satisfaction.toFixed(2)}</h4>`;
-        courseHTML += ` <h4 style="color:${difficulty_color}"> Difficulty Rate:  ${difficulty.toFixed(2)} </h4>`;
-        courseHTML += '</div>';
-        courseHTML += '<p class="courseCode">' + course.courseCode + '</p>';
+        courseHTML += `<h2 style="color:${satisfaction_color}"> Satisfaction Rate:  ${satisfaction.toFixed(2)}</h2>`;
+        courseHTML += `<h2 style="color:${difficulty_color}"> Difficulty Rate:  ${difficulty.toFixed(2)} </h2>`;
         courseHTML += '</div>';
         courseHTML += '</li>';
         courseHTML += '<a/>';
+        courseHTML += '</div>';
         
         return courseHTML; // Return the HTML for each course
     });
