@@ -153,11 +153,12 @@ class Review {
                     }
                 }
             ]).toArray()
-        
+            if (results.length == 0){
+                throw new Error("Class not found")
+            }
             return results; // Return the array of classes
         } catch (error) {
             console.error('Error retrieving classes:', error);
-            return null; // Handle the error as needed
         }
     }
     

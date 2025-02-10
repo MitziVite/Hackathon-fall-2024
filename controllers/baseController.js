@@ -59,13 +59,21 @@ baseController.buildForm = async function(req, res, next) {
 }
 
 baseController.searchResults = async function(req, res, next){
-  const ccid = req.query.courseCode.toUpperCase()
-  const review = new Review(); 
-  let similarClasses = await review.getSimilarClassesByName(ccid)
+  try{
+    const ccid = req.query.courseCode.toUpperCase()
+    const review = new Review(); 
+    let similarClasses = await review.getSimilarClassesByName(ccid)
 
-  const cleanedArray = similarClasses.map((course) => {return {'courseCode': course['__catalogCourseId'], 'courseName': course['title']}})
-  const coursesComponent = await Util.createSimilarCourses(cleanedArray)
-  res.render("search/searchResults", {title: "Search results", courses: coursesComponent})
+    const cleanedArray = similarClasses.map((course) => {return {'courseCode': course['__catalogCourseId'], 'courseName': course['title']}})
+    const coursesComponent = await Util.createSimilarCourses(cleanedArray)
+    res.render("search/searchResults", {title: "Search results", courses: coursesComponent})
+  }
+  catch (error) {
+  console.log(error)
+  req.flash('warning', "Course not found")
+  res.status = 404;
+  next(new Error("We currently don't have the class you are looking for, verify the information provided an try again"));
+  }
 }
 
 module.exports = baseController;
