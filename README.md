@@ -60,7 +60,7 @@ Additionally, students sometimes sign up for what they believe will be an "easy"
 - **Express.js**: A web framework for building the backend API.
 - **Node.js**: The runtime environment for running the backend server.
 - **Chrome Extensions API**: For building the Chrome extension to display course ratings directly on BYUI’s course planning website.
-- 
+  
 ---
 
 
