@@ -5,7 +5,7 @@ const createReview = async function (req, res, next) {
     try{
         let post = req.body
         let form = {
-            codeClass: post.codeClass,
+            codeClass: post.codeClass.replace(' ',''),
             semester: post.semester, 
             year: post.year,
             grades: post.grades,
