@@ -50,7 +50,7 @@ Util.getReviews =  function(reviews) {
         // Rating
         reviewHTML += '<div class="rating">';
         reviewHTML += '<p>Satisfaction: </p>';
-        const starCount = Math.round(review['overallSatisfaction'] / 2); // Assuming a 0-10 scale for overallSatisfaction
+        const starCount = Math.round(review['overallSatisfaction']); // Assuming a 0-10 scale for overallSatisfaction
         for (let i = 0; i < 5; i++) {
             reviewHTML += '<span class="star' + (i < starCount ? ' filled' : '') + '">★</span>';
         }
