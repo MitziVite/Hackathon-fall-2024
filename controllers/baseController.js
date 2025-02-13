@@ -58,22 +58,71 @@ baseController.buildForm = async function(req, res, next) {
   
 }
 
-baseController.searchResults = async function(req, res, next){
-  try{
-    const ccid = req.query.courseCode.toUpperCase()
-    const review = new Review(); 
-    let similarClasses = await review.getSimilarClassesByName(ccid)
+// baseController.searchResults = async function(req, res, next){
+//   try{
+//     const ccid = req.query.courseCode.toUpperCase()
+//     const review = new Review(); 
+//     let similarClasses = await review.getSimilarClassesByName(ccid)
 
-    const cleanedArray = similarClasses.map((course) => {return {'courseCode': course['__catalogCourseId'], 'courseName': course['title']}})
-    const coursesComponent = await Util.createSimilarCourses(cleanedArray)
-    res.render("search/searchResults", {title: "Search results", courses: coursesComponent, isHomePage: null})
+//     const cleanedArray = similarClasses.map((course) => {return {'courseCode': course['__catalogCourseId'], 'courseName': course['title']}})
+//     const coursesComponent = await Util.createSimilarCourses(cleanedArray)
+//     res.render("search/searchResults", {title: "Search results", courses: coursesComponent, isHomePage: null})
+//   }
+//   catch (error) {
+//   console.log(error)
+//   req.flash('warning', "Course not found")
+//   res.status = 404;
+//   next(new Error("We currently don't have the class you are looking for, verify the information provided an try again"));
+//   }
+// }
+
+baseController.searchResults = async function(req, res, next) {
+  try {
+      const searchQuery = req.query.courseCode.trim().toUpperCase();
+      const review = new Review();
+      let results = [];
+
+      // Check if the search query is a full course code (e.g., "CS101")
+      if (/^[A-Z]+\d+$/.test(searchQuery)) { 
+          // Exact match: Redirect to course details
+          return res.redirect(`about/course?courseCode=${searchQuery}`);
+      } 
+
+      // If it's a partial course code (e.g., "CS"), look for similar codes
+      if (/^[A-Z]+$/.test(searchQuery)) {
+          results = await review.getSimilarClassesByCode(searchQuery);
+      } 
+      // If it's not a course code, assume it's a course name
+      else {
+          results = await review.getSimilarClassesByName(searchQuery);
+      }
+
+      // Process and display search results
+      if (results.length > 0) {
+          const cleanedArray = results.map(course => ({
+              courseCode: course['__catalogCourseId'],
+              courseName: course['title']
+          }));
+
+          const coursesComponent = await Util.createSimilarCourses(cleanedArray);
+          return res.render("search/searchResults", {
+              title: "Search Results",
+              courses: coursesComponent,
+              isHomePage: null
+          });
+      }
+
+      // If no results found, handle error
+      req.flash('warning', "Course not found");
+      res.status(404);
+      next(new Error("We currently don't have the class you are looking for. Verify the information provided and try again."));
+  } catch (error) {
+      console.error(error);
+      req.flash('warning', "Something went wrong with your search.");
+      res.status(500);
+      next(new Error("An error occurred while processing your search."));
   }
-  catch (error) {
-  console.log(error)
-  req.flash('warning', "Course not found")
-  res.status = 404;
-  next(new Error("We currently don't have the class you are looking for, verify the information provided an try again"));
-  }
-}
+};
+
 
 module.exports = baseController;
