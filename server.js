@@ -72,12 +72,13 @@ connectDB()
     console.error(`Error at: "${req.originalUrl}": ${err.message}`)
     if(res.status == 404){
       message = err.message
+      title = '404 Course not found'
     } else {
       message = 'Oh no! There was a crash. Maybe try a different route?'
     }
     res.render("errors/error", {
       isHomePage: null,
-      title: `Error ${res.status}` || 'Server Error',
+      title: title || 'Server Error',
       message
       })
   })
