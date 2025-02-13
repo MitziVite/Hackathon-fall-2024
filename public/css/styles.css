@@ -673,6 +673,9 @@ hr {
   min-width: 300px; /* Prevents sections from becoming too narrow */
 }
 
+.studentComments p{
+  width: 250px;
+}
 h4 {
   margin-top: 0;
   margin-bottom: 10px;
