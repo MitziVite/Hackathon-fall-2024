@@ -147,8 +147,10 @@ Util.createSimilarCourses = async function(courseList){
         courseHTML += '<div class="courseCardDetails">';
         courseHTML += `<h2 class="courseCode">${course.courseCode}</h2>`;
         courseHTML += `<h2>${course.courseName}</h2>`;
-        courseHTML += `<h2 style="color:${satisfaction_color}"> Satisfaction Rate:  ${satisfaction.toFixed(2)}</h2>`;
-        courseHTML += `<h2 style="color:${difficulty_color}"> Difficulty Rate:  ${difficulty.toFixed(2)} </h2>`;
+        if(satisfaction != null && difficulty != null){
+            courseHTML += `<h2 style="color:${satisfaction_color}"> Satisfaction Rate:  ${satisfaction.toFixed(2)}</h2>`;
+            courseHTML += `<h2 style="color:${difficulty_color}"> Difficulty Rate:  ${difficulty.toFixed(2)} </h2>`;
+        }
         courseHTML += '</div>';
         courseHTML += '</li>';
         courseHTML += '<a/>';
