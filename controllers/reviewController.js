@@ -5,7 +5,7 @@ const createReview = async function (req, res, next) {
     try{
         let post = req.body
         let form = {
-            codeClass: post.codeClass.replace(' ',''),
+            codeClass: post.codeClass.replace(' ','').toUpperCase(),
             semester: post.semester, 
             year: post.year,
             grades: post.grades,
@@ -21,7 +21,7 @@ const createReview = async function (req, res, next) {
         let review = new Review(form);
         review.createReview();
         req.flash('message', 'Your feedback was saved successfully')
-        res.redirect("/");
+        res.redirect(`/about/course?courseCode=${post.codeClass.replace(' ','').toUpperCase()}`);
     }
     catch (error) {
         req.flash('notice', 'There was an issue with your submission')
