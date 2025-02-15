@@ -544,6 +544,10 @@ input:required:focus:valid {
   flex-grow: 1; 
 }
 
+.course_details p{
+  margin-bottom: 8px;
+}
+
 .code-title{
   display : flex;
   align-items: center;
