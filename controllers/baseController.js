@@ -83,13 +83,13 @@ baseController.searchResults = async function(req, res, next) {
     let results = [];
 
     // Check if the search query is a full course code (e.g., "CS101")
-    if (/^[A-Z]+\d+$/.test(searchQuery)) { 
+    if (/^[A-Za-z]+\s?\d+$/.test(searchQuery)) { 
       // Exact match: Redirect to course details
       return res.redirect(`about/course?courseCode=${searchQuery}`);
     } 
 
     // If it's a partial course code (e.g., "CS"), look for similar codes
-    if (/^[A-Z]{3-5}+$/.test(searchQuery)) {
+    if (/^[A-Za-z]{3-5}+$/.test(searchQuery)) {
       results = await review.getSimilarClassesByCode(searchQuery);
     } 
     // If it's not a course code, assume it's a course name
