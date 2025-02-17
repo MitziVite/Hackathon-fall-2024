@@ -156,6 +156,8 @@ body {
 
 #searchForm{
   all: revert;
+  display: flex;
+  flex-direction: row;
 }
 
 /* 1.6 Footer */
@@ -770,60 +772,10 @@ ul {
 
 
 /*************************
-6. Media Query
+
+
 *************************/
 
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    /* Cambia a columna en pantallas pequeñas */
-    gap: 20px;
-    /* Espaciado entre elementos */
-    background-color: #2B4D6A;
-    /* Color de fondo del navbar */
-    position: absolute;
-    /* Permite que el navbar se superponga */
-    top: 60px;
-    /* Ajusta según la altura del encabezado */
-    right: 0;
-    /* Alinea el navbar a la derecha */
-    width: 100%;
-    /* Ancho completo */
-    display: none;
-    /* Ocultar por defecto */
-    transition: display 0.3s ease;
-    /* Animación suave para mostrar/ocultar */
-  }
-
-  .navbar.active {
-    display: flex;
-    /* Muestra el navbar al activarlo */
-  }
-
-  /* Estilos del botón de menú */
-  .menu-toggle {
-    display: block;
-    /* Muestra el botón de menú */
-    background-color: #2B4D6A;
-    /* Color de fondo */
-    color: #FFD700;
-    /* Color del texto */
-    border: none;
-    /* Sin borde */
-    padding: 10px 15px;
-    /* Espaciado */
-    cursor: pointer;
-    /* Cambia el cursor al pasar el mouse */
-  }
-}
-
-/* Estilos para el botón de menú */
-@media (min-width: 769px) {
-  .menu-toggle {
-    display: none;
-    /* Oculta el botón en pantallas grandes */
-  }
-}
 
 .styled-select {
     width: 100%;
@@ -971,7 +923,7 @@ label {
   top: 0; /* Keep it at the top */
   left: 50%;
   transform: translateX(-50%); /* Center it horizontally */
-  max-width: 800px; /* Set a max width to ensure the search bar doesn’t stretch too wide */
+  max-width: 700px; /* Set a max width to ensure the search bar doesn’t stretch too wide */
   margin: 0 auto; /* Centers the search bar */
 }
 
@@ -1033,4 +985,76 @@ label {
 
 .input-textarea {
     resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+
+
+/*************************
+6. Media Query
+*************************/
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    /* Cambia a columna en pantallas pequeñas */
+    gap: 20px;
+    /* Espaciado entre elementos */
+    background-color: #2B4D6A;
+    /* Color de fondo del navbar */
+    position: absolute;
+    /* Permite que el navbar se superponga */
+    top: 60px;
+    /* Ajusta según la altura del encabezado */
+    right: 0;
+    /* Alinea el navbar a la derecha */
+    width: 100%;
+    /* Ancho completo */
+    display: none;
+    /* Ocultar por defecto */
+    transition: display 0.3s ease;
+    /* Animación suave para mostrar/ocultar */
+  }
+
+  .navbar.active {
+    display: flex;
+    /* Muestra el navbar al activarlo */
+  }
+
+  /* Estilos del botón de menú */
+  .menu-toggle {
+    display: block;
+    /* Muestra el botón de menú */
+    background-color: #2B4D6A;
+    /* Color de fondo */
+    color: #FFD700;
+    /* Color del texto */
+    border: none;
+    /* Sin borde */
+    padding: 10px 15px;
+    /* Espaciado */
+    cursor: pointer;
+    /* Cambia el cursor al pasar el mouse */
+  }
+  .search-bar-container input {
+    width: auto;
+  }
+
+  .radio-group {
+    flex-direction: column;  
+  }
+  .radio-label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+  }
+  
+}
+
+/* Estilos para el botón de menú */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+    /* Oculta el botón en pantallas grandes */
+  }
 }
