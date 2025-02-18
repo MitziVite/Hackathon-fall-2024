@@ -922,7 +922,7 @@ label {
   position: sticky; /* Makes the search bar stick to the top of the screen when scrolling */
   top: 0; /* Keep it at the top */
   left: 50%;
-  transform: translateX(-50%); /* Center it horizontally */
+  transform: none; /* Center it horizontally */
   max-width: 700px; /* Set a max width to ensure the search bar doesn’t stretch too wide */
   margin: 0 auto; /* Centers the search bar */
 }
@@ -1049,6 +1049,16 @@ label {
     margin: 5px;
   }
   
+  .courseCardDetails{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+  }
+  .courseCardDetails h2 {
+    justify-self: center;
+  }
 }
 
 /* Estilos para el botón de menú */
