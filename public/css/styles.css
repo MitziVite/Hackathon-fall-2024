@@ -1059,6 +1059,14 @@ label {
   .courseCardDetails h2 {
     justify-self: center;
   }
+
+  .code-title h1{
+    font-size: xx-large;
+    margin-right: 10%;
+  }
+  .code-title h2{
+    font-size: medium;
+  }
 }
 
 /* Estilos para el botón de menú */
