@@ -50,4 +50,20 @@ const getCourseDetails = async function (req, res, next) {
     res.json(ans);
 };
 
-module.exports = { createReview, getReview, getCourseDetails, getReviewInternal};
+
+const uploadFeedback = async function (req, res, next) {
+    try {
+        console.log(req.body)
+        req.flash('message', 'Your feedback is important to us')
+        const errors = req.session.errors || null;
+        req.session.errors = null; 
+        res.render("index", { title: "Search for Courses", errors, isHomePage: req.path === '/'});
+      } catch (error) {
+        console.error("Error:", error);
+        next(new Error("Error Rendering"));
+      }
+    
+
+}
+
+module.exports = { createReview, getReview, getCourseDetails, getReviewInternal, uploadFeedback};

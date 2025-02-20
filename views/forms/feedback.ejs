@@ -1,5 +1,16 @@
+<%- messages() %>
+<% if (errors) { %>
+    <div>
+        <ul class="notice">
+        <% errors.forEach(error => { %>
+            <li><%= error %></li>
+        <%  }) %>
+        </ul>
+    </div>
+  <% } %>
+
 <div class="container-form">
-    <form action="/forms/submit" method="POST">
+    <form action="/feedback/submit" method="POST">
         <h2>Website Feedback</h2>
 
         <!-- Question 1: Rating the helpfulness of the website -->

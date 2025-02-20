@@ -114,4 +114,67 @@ validate.checkFormData = async (req, res, next) => {
     next();
 };
 
+/*  **********************************
+ *  Feedback Form Validation Rules
+ * ********************************* */
+validate.feedbackFormRules = () => {
+    debugger
+    return [
+        body('helpfulness')
+            .notEmpty()
+            .withMessage('Please indicate how helpful you found the website.')
+            .bail()
+            .isInt({ min: 1, max: 5 })
+            .withMessage('Please select a rating between 1 and 5.'),
+
+        body('missingClass')
+            .notEmpty()
+            .withMessage('Please indicate if you were looking for a class that is missing.')
+            .bail()
+            .isIn(['Yes', 'No'])
+            .withMessage('Please select either Yes or No.'),
+
+        body('className')
+            .optional()
+            .isString()
+            .trim()
+            .escape()
+            .withMessage('Please enter a valid class name or course code.')
+            .isLength({ min: 1 })
+            .withMessage('Please specify the class or course code you were searching for.'),
+
+        body('missingDetails')
+            .optional()
+            .isString()
+            .trim()
+            .escape()
+            .withMessage('Please enter valid class details.')
+            .isLength({ min: 1 })
+            .withMessage('Please provide any additional class details you feel are helpful.'),
+
+        body('extraComments')
+            .optional()
+            .isString()
+            .trim()
+            .escape()
+            .withMessage('Please enter valid comments.')
+            .isLength({ min: 1 })
+            .withMessage('Please add any extra comments or suggestions you may have.'),
+
+    ];
+};
+
+/* ******************************
+ * Check data and return errors or continue to submission
+ * ***************************** */
+validate.checkFeedbackData = async (req, res, next) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        req.session.errors = errors.array().map((err) => err.msg);
+        res.redirect("/forms/feedbackForm"); // Redirect to the feedback form if there are errors
+        return;
+    }
+    next();
+};
+
 module.exports = validate;
