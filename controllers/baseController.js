@@ -124,5 +124,15 @@ baseController.searchResults = async function(req, res, next) {
   }
 };
 
+baseController.buildFeedbackForm = async function (req, res, next) {
+  try{
+    let errors = req.session.errors || null;
+    res.render("forms/feedback", { isHomePage: null, title: "Feedback", errors});
+  } catch (error) {
+    console.error("Error:", error);
+    next(new Error("Error Rendering"));
+  }
+}
+
 
 module.exports = baseController;

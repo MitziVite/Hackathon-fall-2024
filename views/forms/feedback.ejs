@@ -1,0 +1,47 @@
+<div class="container-form">
+    <form action="/forms/submit" method="POST">
+        <h2>Website Feedback</h2>
+
+        <!-- Question 1: Rating the helpfulness of the website -->
+        <label for="helpfulness">On a scale of 1 to 5, how helpful was this website?</label>
+        <div class="select-wrapper">
+            <select id="helpfulness" name="helpfulness" class="styled-select" required>
+                <option value="" disabled selected>Select Rating</option>
+                <option value="1">1 - Not Helpful</option>
+                <option value="2">2 - Slightly Helpful</option>
+                <option value="3">3 - Neutral</option>
+                <option value="4">4 - Helpful</option>
+                <option value="5">5 - Very Helpful</option>
+            </select>
+            <div class="dropdown-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5H7z"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Question 2: Yes/No for missing class -->
+        <label for="missingClass">Is there a class you were looking for that is not currently available on our website?</label>
+        <div class="radio-group" required>
+            <input type="radio" id="missingClassYes" name="missingClass" value="Yes">
+            <label for="missingClassYes" class="radio-label">Yes</label>
+
+            <input type="radio" id="missingClassNo" name="missingClass" value="No">
+            <label for="missingClassNo" class="radio-label">No</label>
+        </div>
+
+        <!-- Question 3: Class or Course Code -->
+        <label for="className">Please specify the class or course code you were looking for:</label>
+        <input type="text" id="className" name="className" placeholder="Example: BIO 180" class="styled-textarea">
+
+        <!-- Question 4: Additional class details -->
+        <label for="missingDetails">What additional class details would be helpful to include that are currently missing?</label>
+        <textarea id="missingDetails" name="missingDetails" rows="4" placeholder="Please provide any details you feel are necessary" class="styled-textarea"></textarea>
+
+        <!-- Question 5: Extra comments -->
+        <label for="extraComments">Do you have any additional comments or suggestions?</label>
+        <textarea id="extraComments" name="extraComments" rows="4" placeholder="Share your thoughts here..." class="styled-textarea"></textarea>
+
+        <button type="submit" class="submit-button">Submit Feedback</button>
+    </form>
+</div>
