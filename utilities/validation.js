@@ -170,7 +170,7 @@ validate.checkFeedbackData = async (req, res, next) => {
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
         req.session.errors = errors.array().map((err) => err.msg);
-        res.redirect("/forms/feedbackForm");
+        res.redirect("/forms/feedback");
         return;
     }
     next();
