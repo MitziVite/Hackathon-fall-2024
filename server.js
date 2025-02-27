@@ -78,7 +78,7 @@ connectDB()
     }
     res.render("errors/error", {
       isHomePage: null,
-      title: title || 'Server Error',
+      title: 'Server Error',
       message
       })
   })

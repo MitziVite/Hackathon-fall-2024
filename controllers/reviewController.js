@@ -57,7 +57,8 @@ const uploadFeedback = async function (req, res, next) {
         req.flash('message', 'Your feedback is important to us')
         const errors = req.session.errors || null;
         req.session.errors = null; 
-        res.render("index", { title: "Search for Courses", errors, isHomePage: req.path === '/'});
+        res.redirect("/");
+        // res.render("index", { title: "Search for Courses", errors, isHomePage: req.path === '/'});
       } catch (error) {
         console.error("Error:", error);
         next(new Error("Error Rendering"));

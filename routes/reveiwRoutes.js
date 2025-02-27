@@ -10,9 +10,9 @@ const validator = require('../utilities/validation');
 router.get("/rateClassForm", utilities.handleErrors(baseController.buildForm));
 router.get("/feedback", utilities.handleErrors(baseController.buildFeedbackForm));
 
-router.post("/feedback/submit", 
-    // validator.feedbackFormRules(),
-    // validator.checkFeedbackData,
+router.post("/submit-feedback", 
+    validator.feedbackFormRules(),
+    validator.checkFeedbackData,
     reviewController.uploadFeedback);
 router.post("/submit", 
     validator.reviewFormRules(),

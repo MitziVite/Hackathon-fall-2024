@@ -118,7 +118,6 @@ validate.checkFormData = async (req, res, next) => {
  *  Feedback Form Validation Rules
  * ********************************* */
 validate.feedbackFormRules = () => {
-    debugger
     return [
         body('helpfulness')
             .notEmpty()
@@ -171,7 +170,7 @@ validate.checkFeedbackData = async (req, res, next) => {
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
         req.session.errors = errors.array().map((err) => err.msg);
-        res.redirect("/forms/feedbackForm"); // Redirect to the feedback form if there are errors
+        res.redirect("/forms/feedbackForm");
         return;
     }
     next();
