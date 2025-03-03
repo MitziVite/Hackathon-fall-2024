@@ -939,9 +939,9 @@ label {
 .search-bar-container button {
     background: none;
     border: none;
-    cursor: pointer;
+    /* cursor: pointer;
     font-size: 18px;
-    color: gray;
+    color: gray; */
     margin-left: 10px;
 }
 .search-bar-container:hover {
