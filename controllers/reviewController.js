@@ -1,3 +1,4 @@
+const Feedback = require('../models/feedbackModel.js');
 const Review = require('../models/reviewModel.js');
 
 
@@ -53,7 +54,17 @@ const getCourseDetails = async function (req, res, next) {
 
 const uploadFeedback = async function (req, res, next) {
     try {
-        console.log(req.body)
+        let post = req.body
+        let form = {
+            helpfulness : post.helpfulness,
+            missingClass : post.missingClass,
+            className : post.className,
+            missingDetails : post.missingDetails,
+            extraComments : post.extraComments,
+        }
+
+        let feedback = new Feedback(form);
+        feedback.createReview();
         req.flash('message', 'Your feedback is important to us')
         const errors = req.session.errors || null;
         req.session.errors = null; 
@@ -66,5 +77,6 @@ const uploadFeedback = async function (req, res, next) {
     
 
 }
+
 
 module.exports = { createReview, getReview, getCourseDetails, getReviewInternal, uploadFeedback};
