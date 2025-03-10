@@ -64,7 +64,7 @@ const uploadFeedback = async function (req, res, next) {
         }
 
         let feedback = new Feedback(form);
-        feedback.createReview();
+        feedback.createFeedback();
         req.flash('message', 'Your feedback is important to us')
         const errors = req.session.errors || null;
         req.session.errors = null; 
