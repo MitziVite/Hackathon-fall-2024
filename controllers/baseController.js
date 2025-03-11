@@ -134,5 +134,15 @@ baseController.buildFeedbackForm = async function (req, res, next) {
   }
 }
 
+baseController.buildLogin = async function (req, res, next){
+  try{
+    let errors = req.session.errors || null;
+    let title = 'Login to your account'
+    res.render("admin/adminLogin", {isHomePage: null, errors, title});
+  } catch (error) {
+    console.error("Error:", error);
+    next(new Error("Error Rendering"));
+  }
+}
 
 module.exports = baseController;

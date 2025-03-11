@@ -20,6 +20,7 @@ router.get("/", utilities.handleErrors(baseController.buildHome));
 router.get("/search", utilities.handleErrors(baseController.searchResults))
 router.use("/about", utilities.handleErrors(aboutRoutes));
 router.use("/forms", utilities.handleErrors(reviewRoutes));
+router.get("/admin", utilities.handleErrors(baseController.buildLogin))
 
 // Backend Routes
 router.post("/createReview", reviewController.createReview);

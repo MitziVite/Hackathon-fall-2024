@@ -19,6 +19,9 @@
 
 5. Error Page
 
+
+7. Login Page
+
 6. Media Query
 
 
@@ -944,7 +947,7 @@ label {
     color: gray; */
     margin-left: 10px;
 }
-.search-bar-container:hover {
+.search-bar-container button:hover {
     border-color: #3c473d; /* Cambia el color del borde al pasar el ratón */
     box-shadow: 0 0 8px rgba(38, 39, 38, 0.6); /* Efecto de iluminación */
 }
@@ -990,7 +993,7 @@ label {
 
 
 /*************************
-6. Media Query
+7. Media Query
 *************************/
 
 @media (max-width: 768px) {
@@ -1075,4 +1078,51 @@ label {
     display: none;
     /* Oculta el botón en pantallas grandes */
   }
+}
+
+
+/*************************
+7. Login Form
+*************************/
+
+
+
+
+/* Form elements */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+
+#username, #password {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #2B4D6A;
+  background-color: #f1f1f1;
+  color: #2B4D6A;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.loginButton:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.loginButton:active {
+  background-color: #3e8e41;
+  transform: translateY(0);
 }
