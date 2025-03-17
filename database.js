@@ -1,19 +1,24 @@
-const { MongoClient } = require('mongodb');
+const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
 require('dotenv').config(); // Load environment variables from .env file
-const uri = process.env.MONGOKEY;
-const client = new MongoClient(uri);
+
+// Set up the DynamoDB client
+const client = new DynamoDBClient({
+    region: 'us-east-1', // Specify your region or use an environment variable
+    credentials: {
+        accessKeyId: "empty",  // Your AWS access key
+        secretAccessKey: "empty", // Your AWS secret access key
+    },
+});
 
 const connectDB = async () => {
     try {
-        await client.connect();
-        console.log('MongoDB connected successfully');
-        return await client.db(); // Return the database object
+        // The DynamoDB client is stateless, so no explicit "connect" method is needed.
+        console.log('DynamoDB client initialized successfully');
+        return client;
     } catch (error) {
-        console.error('MongoDB connection error:', error);
+        console.error('DynamoDB connection error:', error);
         process.exit(1); // Exit the process with failure
     }
 };
-
-//client2 = connectDB();
 
 module.exports = { connectDB };
