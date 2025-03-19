@@ -5,8 +5,8 @@ require('dotenv').config(); // Load environment variables from .env file
 const client = new DynamoDBClient({
     region: 'us-east-1', // Specify your region or use an environment variable
     credentials: {
-        accessKeyId: "empty",  // Your AWS access key
-        secretAccessKey: "empty", // Your AWS secret access key
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,  // Your AWS access key
+        secretAccessKey: AWS_SECRET_ACCESS_KEY, // Your AWS secret access key
     },
 });
 

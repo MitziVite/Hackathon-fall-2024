@@ -27,11 +27,10 @@ connectDB()
         hashKey: '_ID',          // The primary key for DynamoDB session data
         // Optional rangeKey if you'd like to segment by user or another key (e.g., userId)
       }),
-      secret: '425308b81568913d16a6ae9d24efcfffca02b9b7d115a9751d19f1d5e616db0781f858cc582f3ff9d88db452773f2c74a801e3cc0135a39476039e80c6d49ef0',  // Session>
+      secret: process.env.SECRET,
       resave: false, 
       saveUninitialized: false,
     }));
-
     // Express Messages Middleware
     app.use(require('connect-flash')());
     app.use(function(req, res, next){
