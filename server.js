@@ -82,7 +82,7 @@ connectDB()
      * Values from .env (environment) file
      *************************/
     const port = 3000;
-    const host = "18.234.162.141";
+    const host = "3.225.131.34";
 
     /* ***********************
      * Log statement to confirm server operation
