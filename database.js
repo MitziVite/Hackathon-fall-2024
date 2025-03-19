@@ -6,7 +6,7 @@ const client = new DynamoDBClient({
     region: 'us-east-1', // Specify your region or use an environment variable
     credentials: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,  // Your AWS access key
-        secretAccessKey: AWS_SECRET_ACCESS_KEY, // Your AWS secret access key
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY, // Your AWS secret access key
     },
 });
 
