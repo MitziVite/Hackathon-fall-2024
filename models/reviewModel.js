@@ -1,19 +1,14 @@
-const { connectDB } = require('../database');
+const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
+const { DynamoDBDocumentClient, PutCommand, QueryCommand, ScanCommand } = require('@aws-sdk/lib-dynamodb');
+require('dotenv').config();
 
+// Initialize the DynamoDB client
+const client = new DynamoDBClient({ region: process.env.AWS_REGION });
+const db = DynamoDBDocumentClient.from(client);
 
-var db = null;
-
-connectDB()
-.then(result => {
-    db = result; // "Hello, World!"
-})
-.catch(error => {
-    console.error(error);
-});
-
-// Define the review structure (no strict schema like Mongoose)
+// Define the review structure
 class Review {
-    constructor({ 
+    constructor({
         codeClass = undefined,
         semester = undefined,
         year = undefined,
@@ -24,145 +19,129 @@ class Review {
         overallSatisfaction = undefined,
         onlinevsperson = undefined,
         teacher = undefined,
-        comment = undefined} = {}) {
-
-        this.codeClass = codeClass,
-        this.semester = semester,
-        this.year = year,
-        this.grades = grades,
-        this.difficulty = difficulty,
-        this.hoursPerWeek = hoursPerWeek,
-        this.evaluationType = evaluationType,
-        this.overallSatisfaction = overallSatisfaction,
-        this.onlinevsperson = onlinevsperson,
-        this.teacher = teacher,
-        this.comment = comment,
-        this.db = db
-    }
-
-
-
-    async getAverages(codeClass) {
-        const collection = await this.db.collection('reviews'); 
-
-        const averages = await collection.aggregate([
-            { $match: { codeClass } },
-            {
-                $group: {
-                    _id: null,
-                    averageHoursPerWeek: { $avg: "$hoursPerWeek" },
-                    averageOverallSatisfaction: { $avg: "$overallSatisfaction" },
-                    averageDifficulty: { $avg: "$difficulty" }
-                }
-            }
-        ]).toArray();
-
-        return averages.length > 0 ? averages[0] : {
-            averageHoursPerWeek: 0,
-            averageOverallSatisfaction: 0,
-            averageDifficulty: 0
-        };
+        comment = undefined
+    } = {}) {
+        this.codeClass = codeClass;
+        this.semester = semester;
+        this.year = year;
+        this.grades = grades;
+        this.difficulty = difficulty;
+        this.hoursPerWeek = hoursPerWeek;
+        this.evaluationType = evaluationType;
+        this.overallSatisfaction = overallSatisfaction;
+        this.onlinevsperson = onlinevsperson;
+        this.teacher = teacher;
+        this.comment = comment;
     }
 
     async createReview() {
-        let obj = {
-            codeClass: this.codeClass,
-            semester: this.semester,
-            year: this.year,
-            grades: this.grades,
-            difficulty: this.difficulty,
-            hoursPerWeek: this.hoursPerWeek,
-            evaluationType: this.evaluationType,
-            overallSatisfaction: this.overallSatisfaction,
-            onlinevsperson: this.onlinevsperson,
-            teacher: this.teacher,
-            comment: this.comment,
-        };
-        let reviews = this.db.collection('reviews')
-        let result = await reviews.insertOne(obj);
-        console.log(result)
-    }
-    
-    async getClassesWithReviews(codeClass) {
         try {
-            const collection = db.collection('classes'); // The Classes collection
-            const results = await collection.aggregate([
-                {
-                    $lookup: {
-                        from: 'reviews',           // The collection to join
-                        localField: '__catalogCourseId',        // The field from the Classes collection
-                        foreignField: 'codeClass', // The field from the Reviews collection
-                        as: 'reviews'             // The name of the new array field for the reviews
-                    }
-                },
-                {$match:{
-                    __catalogCourseId: { $in: [codeClass] } // Filter for specific classes
-                }},
-                {
-                    $addFields: {
-                        reviews: {
-                            $sortArray: {
-                                input: "$reviews",
-                                sortBy: { year: -1 } // Sort by the year field in ascending order
-                            }
-                        }
-                    }
-                }
-            ]).toArray();
-    
-            return results; // Return the array of classes with their reviews
+            const obj = {
+                codeClass: this.codeClass,
+                semester: this.semester,
+                year: this.year,
+                grades: this.grades,
+                difficulty: this.difficulty,
+                hoursPerWeek: this.hoursPerWeek,
+                evaluationType: this.evaluationType,
+                overallSatisfaction: this.overallSatisfaction,
+                onlinevsperson: this.onlinevsperson,
+                teacher: this.teacher,
+                comment: this.comment,
+            };
+
+            const command = new PutCommand({
+                TableName: "Reviews",
+                Item: obj,
+            });
+
+            await db.send(command);
+            console.log("Review added successfully");
         } catch (error) {
-            console.error('Error retrieving classes with reviews:', error);
-            return null; // Handle the error as needed
+            console.error("Error adding review:", error);
         }
     }
-    
+
+    async getAverages(codeClass) {
+        try {
+            const command = new QueryCommand({
+                TableName: "Reviews",
+                KeyConditionExpression: "codeClass = :codeClass",
+                ExpressionAttributeValues: { ":codeClass": codeClass }
+            });
+
+            const { Items } = await db.send(command);
+
+            if (!Items || Items.length === 0) {
+                return { averageHoursPerWeek: 0, averageOverallSatisfaction: 0, averageDifficulty: 0 };
+            }
+
+            const total = Items.length;
+            const avgHoursPerWeek = Items.reduce((sum, r) => sum + (r.hoursPerWeek || 0), 0) / total;
+            const avgOverallSatisfaction = Items.reduce((sum, r) => sum + (r.overallSatisfaction || 0), 0) / total;
+            const avgDifficulty = Items.reduce((sum, r) => sum + (r.difficulty || 0), 0) / total;
+
+            return { averageHoursPerWeek: avgHoursPerWeek, averageOverallSatisfaction: avgOverallSatisfaction, averageDifficulty: avgDifficulty };
+        } catch (error) {
+            console.error("Error fetching averages:", error);
+            return null;
+        }
+    }
+
+    async getClassesWithReviews(codeClass) {
+        try {
+            const command = new QueryCommand({
+                TableName: "Reviews",
+                KeyConditionExpression: "codeClass = :codeClass",
+                ExpressionAttributeValues: { ":codeClass": codeClass }
+            });
+
+            const { Items } = await db.send(command);
+            return Items || [];
+        } catch (error) {
+            console.error("Error retrieving classes with reviews:", error);
+            return null;
+        }
+    }
+
     async getSimilarClassesByCode(code) {
         try {
-            const collection = db.collection('classes'); // The Classes collection
-            const results = await collection.aggregate([
-                {
-                    $match: {
-                        __catalogCourseId: { $regex: `^${code}` } // Case-insensitive search for 'starts with'
-                    }
-                }
-            ]).toArray()
-        
-            return results; // Return the array of classes
+            const command = new ScanCommand({
+                TableName: "Classes",
+                FilterExpression: "begins_with(__catalogCourseId, :code)",
+                ExpressionAttributeValues: { ":code": code }
+            });
+
+            const { Items } = await db.send(command);
+            return Items || [];
         } catch (error) {
-            console.error('Error retrieving classes:', error);
-            return null; // Handle the error as needed
+            console.error("Error retrieving similar classes:", error);
+            return null;
         }
     }
 
     async getSimilarClassesByName(name) {
         try {
+            const words = name.trim().split(/\s+/);
+            const regex = words.map(word => `(?=.*${word})`).join("");
 
-            // Convert input into an array of words
-            const words = name.trim().split(/\s+/); // Split by spaces
+            const command = new ScanCommand({
+                TableName: "Classes",
+                FilterExpression: "contains(title, :name)",
+                ExpressionAttributeValues: { ":name": regex }
+            });
 
-            // Build regex patterns to match all words (in any order)
-            const regexPatterns = words.map(word => `(?=.*${word})`).join("");
-
-            const regex = new RegExp(regexPatterns, "i"); // Case-insensitive regex
-            const collection = db.collection('classes'); // The Classes collection
-            const results = await collection.aggregate([
-                {
-                    $match: {
-                        title: { $regex: regex } // Case-insensitive search for 'starts with'
-                    }
-                }
-            ]).toArray()
-            if (results.length == 0){
-                throw new Error("Class not found")
+            const { Items } = await db.send(command);
+            if (!Items || Items.length === 0) {
+                throw new Error("Class not found");
             }
-            return results; // Return the array of classes
+
+            return Items;
         } catch (error) {
-            console.error('Error retrieving classes:', error);
+            console.error("Error retrieving classes:", error);
+            return null;
         }
     }
-    
-
 }
 
 module.exports = Review;
